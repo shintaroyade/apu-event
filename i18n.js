@@ -15,7 +15,7 @@ const I18N = {
     "common.testMode": "テストモード:送信先が未設定のため、送信内容はブラウザのコンソールに出力されます",
 
     /* ---- index:メタ・ナビ ---- */
-    "meta.indexTitle": "参加申込|APU最大規模プレゼンイベント(仮)",
+    "meta.indexTitle": "参加申込|UNMUTE to ACTION",
     "skip": "参加申込フォームへ移動",
     "sticky.cta": "参加申込",
 
@@ -212,7 +212,7 @@ const I18N = {
     "contact.email": "メール",
 
     /* ---- 投票ページ ---- */
-    "meta.voteTitle": "共感度投票|APU最大規模プレゼンイベント(仮)",
+    "meta.voteTitle": "共感度投票|UNMUTE to ACTION",
     "vote.title": "共感度投票",
     "vote.lead": "共感した気持ちを、ハートで届けてください。",
     "vote.step1": "発表者",

@@ -411,3 +411,7 @@ html:not([lang="en"]) .intro__line, html:not([lang="en"]) .intro__line .ch { whi
 @keyframes introFlags { to { transform: translateX(-50%); } }
 @media (max-height: 600px) { .intro__cap { font-size: 11.5px; } .intro__flagtrack { font-size: 18px; } }
 @media (max-height: 520px) { .intro__cap, .intro__bands { display: none; } }
+
+/* サブタイトル(イベント名の下) */
+.hero__subtitle { margin: -6px 0 16px; font-size: clamp(14px, 4vw, 17px); font-weight: 700; letter-spacing: .08em; color: var(--c-pink, #ff2e97); }
+.hero__title { white-space: nowrap; }

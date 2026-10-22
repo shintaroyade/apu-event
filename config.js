@@ -12,25 +12,33 @@ const CONFIG = {
   /* ---------- イベント基本情報 ---------- */
   event: {
     name: {
-      ja: "APU最大規模\u200bプレゼン\u200bイベント(仮)",
-      en: "APU's Largest Presentation Event (tentative)"
+      ja: "UNMUTE to ACTION",
+      en: "UNMUTE to ACTION"
+    },
+    subtitle: {
+      ja: "〜その声で次をつくれ〜",
+      en: "~ Turn your voice into what's next ~"
     },
     date: {
-      ja: "【2026年12月○日(○)\n○時〜○時(約3時間)】",
-      en: "【Dec ○, 2026 (○)\n○:00–○:00 (approx. 3 hours)】"
+      ja: "2026年12月上旬\n(日時は決まり次第発表します)",
+      en: "Early December 2026\n(Date & time to be announced)"
     },
     venue: {
-      ja: "【APU J101教室】",
-      en: "【APU Room J101】"
+      ja: "APU J101教室(予定)",
+      en: "APU Room J101 (planned)"
     }
   },
 
   /* ---------- 主催者・問い合わせ先 ---------- */
   organizer: {
-    name: { ja: "【主催団体名】", en: "【Organizer name】" },
-    instagram: "【Instagramアカウント名】",   // 例: "@nsj_apu"
+    name: { ja: "NEXT SPARK JAPAN 森山慎太郎", en: "NEXT SPARK JAPAN / Shintaro Moriyama" },
+    instagram: "@nextsparkjapan / @shintaroyade",
+    instagrams: [
+      { label: "@nextsparkjapan", url: "https://www.instagram.com/nextsparkjapan/" },
+      { label: "@shintaroyade",   url: "https://www.instagram.com/shintaroyade/" }
+    ],
     instagramUrl: "",                        // 例: "https://www.instagram.com/xxxx/"(空ならリンクにしない)
-    email: "【メールアドレス】"               // 例: "xxxx@example.com"
+    email: "nextsparkjapan@gmail.com"               // 例: "xxxx@example.com"
   },
 
   /* ---------- リンク ---------- */

@@ -4,12 +4,12 @@
  * ========================================================================= */
 Object.assign(I18N.ja, {
   "skip": "本文へ移動",
-  "meta.homeTitle": "APU最大規模プレゼンイベント(仮)|登壇者募集中",
-  "meta.programTitle": "当日の流れ|APU最大規模プレゼンイベント(仮)",
-  "meta.playTitle": "あそぶ|APU最大規模プレゼンイベント(仮)",
-  "meta.speakerTitle": "登壇者募集|APU最大規模プレゼンイベント(仮)",
-  "meta.entryTitle": "参加申込|APU最大規模プレゼンイベント(仮)",
-  "meta.faqTitle": "よくある質問・お問い合わせ|APU最大規模プレゼンイベント(仮)",
+  "meta.homeTitle": "UNMUTE to ACTION|登壇者募集中",
+  "meta.programTitle": "当日の流れ|UNMUTE to ACTION",
+  "meta.playTitle": "あそぶ|UNMUTE to ACTION",
+  "meta.speakerTitle": "登壇者募集|UNMUTE to ACTION",
+  "meta.entryTitle": "参加申込|UNMUTE to ACTION",
+  "meta.faqTitle": "よくある質問・お問い合わせ|UNMUTE to ACTION",
 
   "nav.home": "ホーム",
   "nav.program": "当日の流れ",
@@ -117,7 +117,7 @@ Object.assign(I18N.en, {
 });
 
 Object.assign(I18N.ja, {
-  "meta.wallTitle": "みんなのやってみたい|APU最大規模プレゼンイベント(仮)",
+  "meta.wallTitle": "みんなのやってみたい|UNMUTE to ACTION",
   "nav.wall": "みんなのやってみたい",
   "hub.wall.name": "みんなのやってみたい",
   "hub.wall.desc": "参加者のひとことを一覧で。あなたの一言も載るかも",

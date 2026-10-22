@@ -565,7 +565,14 @@
   function initContact() {
     const insta = $("#contactInsta"), mail = $("#contactEmail");
     const o = CONFIG.organizer;
-    if (insta) {
+    if (insta && Array.isArray(o.instagrams) && o.instagrams.length) {
+      o.instagrams.forEach((it, i) => {
+        if (i) insta.appendChild(document.createTextNode(" / "));
+        const a = document.createElement("a");
+        a.href = it.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = it.label;
+        insta.appendChild(a);
+      });
+    } else if (insta) {
       if (o.instagramUrl) {
         const a = document.createElement("a");
         a.href = o.instagramUrl; a.target = "_blank"; a.rel = "noopener"; a.textContent = o.instagram;
