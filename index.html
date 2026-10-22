@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>APU最大規模プレゼンイベント(仮)|登壇者募集中</title>
+  <meta name="description" content="1Qで芽生えた情熱を、言葉にして世界に叫ぶ。APU生の「やってみたい」が集まるプレゼンイベントです。登壇者募集中。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="APU最大規模プレゼンイベント(仮)">
+  <meta property="og:title" content="APU最大規模プレゼンイベント(仮)|登壇者募集中">
+  <meta property="og:description" content="1Qで芽生えた情熱を、言葉にして世界に叫ぶ。APU生の「やってみたい」が集まるプレゼンイベントです。登壇者募集中。">
+  <meta property="og:url" content="https://YOUR-NAME.github.io/apu-event/index.html">
+  <meta property="og:image" content="https://YOUR-NAME.github.io/apu-event/ogp.png">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#08080c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/i18n_extra.js" defer></script>
+  <script src="js/budoux-ja.min.js" defer></script>
+  <script src="js/common.js" defer></script>
+  <script src="js/site.js" defer></script>
+  <script src="js/index.js" defer></script>
+  <script src="js/pop.js" defer></script>
+  <script src="js/earth-data.js" defer></script>
+  <script src="js/intro.js" defer></script>
+</head>
+<body>
+  <script>document.documentElement.classList.add("js");document.documentElement.dataset.titleKey="meta.homeTitle";document.addEventListener("DOMContentLoaded",function(){document.body.dataset.page="home";document.body.classList.add("has-bar");},{once:true});</script>
+  <script>(function(){try{var d=document.documentElement,q=/[?&]intro=1(&|$)/.test(location.search),last=0;try{last=Number(JSON.parse(localStorage.getItem("apu-event-intro-v1")))||0}catch(e){}var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;if(!rm&&(q||Date.now()-last>6*3600*1000))d.classList.add("intro-on")}catch(e){}})();</script>
+  <div class="intro" id="intro" aria-label="opening">
+    <canvas class="intro__canvas" id="introCanvas" aria-hidden="true"></canvas>
+    <button type="button" class="intro__skip" id="introSkip" data-i18n="intro.skip"></button>
+    <p class="intro__greet" id="introGreet" aria-hidden="true"></p>
+    <div class="intro__stat" id="introStat"><b id="introNum">0</b><span data-i18n="intro.stat1"></span><small data-i18n="intro.stat2"></small><small data-i18n="intro.stat3"></small></div>
+    <div class="intro__words" id="introWords" aria-hidden="true"></div>
+    <span class="intro__tag" id="introTagTsurumi" data-i18n="intro.tag1"></span>
+    <span class="intro__tag intro__tag--r" id="introTagBay" data-i18n="intro.tag2"></span>
+    <span class="intro__tag" id="introTagSteam" data-i18n="intro.tag3"></span>
+    <div class="intro__bottom" id="introBottom">
+    <div class="intro__text">
+      <p class="intro__line" id="introL1"></p>
+      <p class="intro__line intro__line--accent" id="introL2"></p>
+      <p class="intro__line intro__line--accent" id="introL3"></p>
+    </div>
+    <div class="intro__final" id="introFinal">
+      <p class="intro__chips"><span>2026.12</span><span data-i18n="intro.c2"></span><span data-i18n="intro.c3"></span></p>
+      <div class="intro__cta">
+        <a class="btn btn-primary" id="introCtaSpeaker" href="speaker.html" data-speaker-when="open" data-i18n="intro.ctaSpeaker"></a>
+        <a class="btn btn-secondary" href="entry.html" data-i18n="intro.ctaEntry"></a>
+        <a class="btn btn-secondary" href="entry.html?role=group" data-i18n="intro.ctaCoop"></a>
+        <a class="btn btn-secondary intro__enter" id="introEnter" href="#main" data-i18n="intro.enter"></a>
+      </div>
+    </div>
+    </div>
+    <p class="intro__place" id="introPlace"></p>
+    <p class="intro__cap" id="introCap" data-i18n="intro.cap"></p>
+    <div class="intro__bands" id="introBands" aria-hidden="true"><div class="intro__flags" id="introFlags"><div class="intro__flagtrack"></div></div><div class="intro__flags intro__flags--rev" id="introHello"><div class="intro__flagtrack intro__hellotrack"></div></div></div>
+  </div>
+  <a class="skip-link" href="#main" data-i18n="skip"></a>
+  <header class="site-header">
+    <a class="site-header__name" href="index.html"><budoux-ja data-cfg="event.name"></budoux-ja></a>
+    <div class="site-header__tools">
+      <button type="button" id="langToggle" class="lang-toggle" data-i18n="lang.toggle" data-i18n-aria="lang.toggleAria">English</button>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="siteMenu"><span class="menu-btn__bars" aria-hidden="true"></span></button>
+    </div>
+  </header>
+  <nav id="siteMenu" class="site-menu" aria-labelledby="menuLabel" hidden>
+    <p id="menuLabel" class="visually-hidden" data-i18n="menu.label"></p>
+    <ul>
+      <li><a href="index.html" data-page-link="home"><span data-i18n="nav.home"></span></a></li>
+      <li><a href="program.html" data-page-link="program"><span data-i18n="nav.program"></span></a></li>
+      <li><a href="play.html" data-page-link="play"><span data-i18n="nav.play"></span></a></li>
+      <li><a href="wall.html" data-page-link="wall"><span data-i18n="nav.wall"></span></a></li>
+      <li><a href="speaker.html" data-page-link="speaker"><span data-i18n="nav.speaker"></span><span class="menu-tag" data-speaker-when="open" data-i18n="nav.open"></span><span class="menu-tag" data-speaker-when="closed" data-i18n="nav.closed" hidden></span></a></li>
+      <li><a href="entry.html" data-page-link="entry"><span data-i18n="nav.entry"></span></a></li>
+      <li><a href="faq.html" data-page-link="faq"><span data-i18n="nav.faq"></span></a></li>
+    </ul>
+  </nav>
+
+  <budoux-ja>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__shapes" aria-hidden="true">
+        <span class="shape shape--grid"></span>
+        <span class="shape shape--orb"></span>
+        <span class="shape shape--ring"></span>
+        <span class="shape shape--dot"></span>
+        <span class="shape shape--scan"></span>
+      </div>
+      <canvas class="pop-canvas" aria-hidden="true"></canvas>
+      <div class="hero__inner">
+        <p class="hero__eyebrow fade-in" style="--d:.05s" data-i18n="hero.eyebrow"></p>
+        <h1 id="hero-title" class="hero__title fade-in" style="--d:.15s"><budoux-ja data-cfg="event.name"></budoux-ja></h1>
+        <p class="hero__concept fade-in" style="--d:.3s" data-i18n="hero.concept"></p>
+        <dl class="hero__info fade-in" style="--d:.45s">
+          <div><dt data-i18n="hero.dateLabel"></dt><dd data-cfg="event.date"></dd></div>
+          <div><dt data-i18n="hero.venueLabel"></dt><dd data-cfg="event.venue"></dd></div>
+        </dl>
+
+        <div class="recruit fade-in" style="--d:.6s" data-speaker-when="open">
+          <p class="recruit__tag" data-i18n="recruit.tag"></p>
+          <h2 class="recruit__title" data-i18n="recruit.title"></h2>
+          <p class="recruit__lead" data-i18n="recruit.lead"></p>
+          <div class="cd" data-countdown>
+            <p class="cd__label" data-i18n="cd.label"></p>
+            <div class="cd__grid" role="timer" aria-live="off">
+              <div class="cd__cell"><span class="cd__num" data-u="d">--</span><span class="cd__unit" data-i18n="cd.d"></span></div>
+              <div class="cd__cell"><span class="cd__num" data-u="h">--</span><span class="cd__unit" data-i18n="cd.h"></span></div>
+              <div class="cd__cell"><span class="cd__num" data-u="m">--</span><span class="cd__unit" data-i18n="cd.m"></span></div>
+              <div class="cd__cell"><span class="cd__num" data-u="s">--</span><span class="cd__unit" data-i18n="cd.s"></span></div>
+            </div>
+            <p class="cd__date" data-cd-until></p>
+          </div>
+          <a class="btn btn-primary btn-block" href="speaker.html" data-i18n="recruit.cta"></a>
+        </div>
+
+        <div class="hero__actions fade-in" style="--d:.75s">
+          <a class="btn btn-secondary" href="entry.html" data-speaker-when="open" data-i18n="hero.entry"></a>
+          <a class="btn btn-primary hero__cta" href="entry.html" data-speaker-when="closed" data-i18n="hero.entryClosed" hidden></a>
+          <p class="hero__sub" data-i18n="hero.sub"></p>
+        </div>
+      </div>
+      <div class="pop-hud">
+        <p class="pop-hint" role="status"></p>
+        <p class="pop-count" aria-live="off"></p>
+        <button type="button" class="pop-sound" aria-pressed="false"></button>
+      </div>
+    </section>
+    <!-- ===== 2. このイベントについて ===== -->
+    <section id="about" class="section reveal" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" class="section__title" data-i18n="about.title"></h2>
+        <p data-i18n="about.body"></p>
+        <p class="about__highlight" data-i18n="about.highlight"></p>
+        <ul class="chips" role="list">
+          <li class="chip" data-i18n="about.fact1"></li>
+          <li class="chip" data-i18n="about.fact2"></li>
+          <li class="chip" data-i18n="about.fact3"></li>
+        </ul>
+      </div>
+    </section>
+    <section class="section reveal" aria-labelledby="hub-title">
+      <div class="container">
+        <h2 id="hub-title" class="section__title" data-i18n="hub.title"></h2>
+        <ul class="hub" role="list">
+          <li><a class="hub-card" href="program.html"><span class="hub-card__no">01</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.program.name"></span><span class="hub-card__desc" data-i18n="hub.program.desc"></span></span></a></li>
+          <li><a class="hub-card" href="play.html"><span class="hub-card__no">02</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.play.name"></span><span class="hub-card__desc" data-i18n="hub.play.desc"></span></span></a></li>
+          <li><a class="hub-card" href="wall.html"><span class="hub-card__no">03</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.wall.name"></span><span class="hub-card__desc" data-i18n="hub.wall.desc"></span></span></a></li>
+          <li><a class="hub-card" href="entry.html"><span class="hub-card__no">04</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.entry.name"></span><span class="hub-card__desc" data-i18n="hub.entry.desc"></span></span></a></li>
+          <li><a class="hub-card" href="faq.html"><span class="hub-card__no">05</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.faq.name"></span><span class="hub-card__desc" data-i18n="hub.faq.desc"></span></span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  </budoux-ja>
+
+  <footer class="site-footer">
+    <nav class="foot-nav" aria-label="サイト内リンク">
+      <a href="index.html" data-i18n="nav.home"></a>
+      <a href="program.html" data-i18n="nav.program"></a>
+      <a href="play.html" data-i18n="nav.play"></a>
+      <a href="wall.html" data-i18n="nav.wall"></a>
+      <a href="speaker.html" data-i18n="nav.speaker"></a>
+      <a href="entry.html" data-i18n="nav.entry"></a>
+      <a href="faq.html" data-i18n="nav.faq"></a>
+    </nav>
+    <p><a class="intro-replay" href="index.html?intro=1" data-i18n="intro.replay"></a></p>
+    <p><span data-cfg="event.name"></span></p>
+    <p>© <span data-cfg="organizer.name"></span></p>
+  </footer>
+
+  <nav class="tabbar" aria-label="メインメニュー">
+    <a class="tab" href="index.html" data-page-link="home"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/></svg><span class="tab__label" data-i18n="tab.home"></span></a>
+    <a class="tab" href="program.html" data-page-link="program"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg><span class="tab__label" data-i18n="tab.program"></span></a>
+    <a class="tab tab--cta" href="speaker.html" data-page-link="speaker" data-speaker-when="open"><span class="tab__pill"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0"/><path d="M12 18v3"/></svg><span class="tab__label" data-i18n="tab.speaker"></span><span class="tab__sub" data-cd-short></span></span></a>
+    <a class="tab" href="play.html" data-page-link="play wall"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.2 5.3 5.8.5-4.4 3.8 1.4 5.6L12 15.6 7 18.7l1.4-5.6L4 9.3l5.8-.5z"/></svg><span class="tab__label" data-i18n="tab.play"></span></a>
+    <a class="tab" href="entry.html" data-page-link="entry"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5a2 2 0 0 0 0 4v0a2 2 0 0 1 0 4V18h16v-1.5a2 2 0 0 1 0-4v0a2 2 0 0 0 0-4V7H4z" transform="translate(0 -0.5)"/><path d="M14 7v10" stroke-dasharray="1.5 2.2"/></svg><span class="tab__label" data-i18n="tab.entry"></span></a>
+  </nav>
+</body>
+</html>

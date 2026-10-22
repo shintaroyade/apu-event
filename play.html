@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>あそぶ|APU最大規模プレゼンイベント(仮)</title>
+  <meta name="description" content="タイプ診断とミッションで、イベントを先取りしよう。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="APU最大規模プレゼンイベント(仮)">
+  <meta property="og:title" content="あそぶ|APU最大規模プレゼンイベント(仮)">
+  <meta property="og:description" content="タイプ診断とミッションで、イベントを先取りしよう。">
+  <meta property="og:url" content="https://YOUR-NAME.github.io/apu-event/play.html">
+  <meta property="og:image" content="https://YOUR-NAME.github.io/apu-event/ogp.png">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#08080c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/i18n_extra.js" defer></script>
+  <script src="js/budoux-ja.min.js" defer></script>
+  <script src="js/common.js" defer></script>
+  <script src="js/site.js" defer></script>
+  <script src="js/index.js" defer></script>
+  <script src="js/pop.js" defer></script>
+</head>
+<body>
+  <script>document.documentElement.classList.add("js");document.documentElement.dataset.titleKey="meta.playTitle";document.addEventListener("DOMContentLoaded",function(){document.body.dataset.page="play";document.body.classList.add("has-bar");},{once:true});</script>
+  <a class="skip-link" href="#main" data-i18n="skip"></a>
+  <header class="site-header">
+    <a class="site-header__name" href="index.html"><budoux-ja data-cfg="event.name"></budoux-ja></a>
+    <div class="site-header__tools">
+      <button type="button" id="langToggle" class="lang-toggle" data-i18n="lang.toggle" data-i18n-aria="lang.toggleAria">English</button>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="siteMenu"><span class="menu-btn__bars" aria-hidden="true"></span></button>
+    </div>
+  </header>
+  <nav id="siteMenu" class="site-menu" aria-labelledby="menuLabel" hidden>
+    <p id="menuLabel" class="visually-hidden" data-i18n="menu.label"></p>
+    <ul>
+      <li><a href="index.html" data-page-link="home"><span data-i18n="nav.home"></span></a></li>
+      <li><a href="program.html" data-page-link="program"><span data-i18n="nav.program"></span></a></li>
+      <li><a href="play.html" data-page-link="play"><span data-i18n="nav.play"></span></a></li>
+      <li><a href="wall.html" data-page-link="wall"><span data-i18n="nav.wall"></span></a></li>
+      <li><a href="speaker.html" data-page-link="speaker"><span data-i18n="nav.speaker"></span><span class="menu-tag" data-speaker-when="open" data-i18n="nav.open"></span><span class="menu-tag" data-speaker-when="closed" data-i18n="nav.closed" hidden></span></a></li>
+      <li><a href="entry.html" data-page-link="entry"><span data-i18n="nav.entry"></span></a></li>
+      <li><a href="faq.html" data-page-link="faq"><span data-i18n="nav.faq"></span></a></li>
+    </ul>
+  </nav>
+
+  <budoux-ja>
+  <main id="main">
+    <nav class="play-nav" aria-label="play">
+      <div class="container">
+        <ul class="play-nav__list" role="list">
+          <li><a class="play-nav__link" href="#diagnosis" data-i18n="play.nav.dx"></a></li>
+          <li><a class="play-nav__link" href="#missions" data-i18n="play.nav.ms"></a></li>
+          <li><a class="play-nav__link" href="wall.html" data-i18n="nav.wall"></a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- ===== 4. 「やりたいこと」ひとこと診断(独立セクション:削除してもOK) ===== -->
+    <section id="diagnosis" class="section reveal" aria-labelledby="dx-title">
+      <div class="container">
+        <p class="section__kicker" data-i18n="dx.kicker"></p>
+        <h2 id="dx-title" class="section__title" data-i18n="dx.title"></h2>
+        <p data-i18n="dx.lead"></p>
+        <p class="note note--lock" data-i18n="dx.privacy"></p>
+
+        <form id="dxForm" class="card dx" novalidate>
+          <fieldset class="dx__q">
+            <legend class="dx__label" data-i18n="dx.q1"></legend>
+            <p class="help" data-i18n="dx.q1Help"></p>
+            <div class="pill-group" id="dxWhoGroup">
+              <label class="pill"><input type="radio" name="who" value="peer"><span data-i18n="dx.who.peer"></span></label>
+              <label class="pill"><input type="radio" name="who" value="friends"><span data-i18n="dx.who.friends"></span></label>
+              <label class="pill"><input type="radio" name="who" value="local"><span data-i18n="dx.who.local"></span></label>
+              <label class="pill"><input type="radio" name="who" value="apu"><span data-i18n="dx.who.apu"></span></label>
+              <label class="pill"><input type="radio" name="who" value="world"><span data-i18n="dx.who.world"></span></label>
+              <label class="pill"><input type="radio" name="who" value="future"><span data-i18n="dx.who.future"></span></label>
+              <label class="pill"><input type="radio" name="who" value="other"><span data-i18n="dx.who.other"></span></label>
+            </div>
+            <div class="dx__other" id="dxWhoOtherWrap" hidden>
+              <label class="visually-hidden" for="dxWhoOther" data-i18n="dx.who.other"></label>
+              <input class="input" id="dxWhoOther" type="text" maxlength="20" data-i18n-placeholder="dx.whoPlaceholder">
+            </div>
+            <p class="err" id="dxWhoErr" aria-live="polite"></p>
+          </fieldset>
+
+          <div class="dx__q">
+            <label class="dx__label" for="dxWhat" data-i18n="dx.q2"></label>
+            <input class="input" id="dxWhat" type="text" maxlength="30" data-i18n-placeholder="dx.whatPlaceholder" aria-describedby="dxWhatCount dxWhatErr">
+            <p class="counter" id="dxWhatCount" aria-live="polite"></p>
+            <p class="err" id="dxWhatErr" aria-live="polite"></p>
+          </div>
+
+          <div class="dx__q">
+            <label class="dx__label" for="dxWhy" data-i18n="dx.q3"></label>
+            <input class="input" id="dxWhy" type="text" maxlength="30" data-i18n-placeholder="dx.whyPlaceholder" aria-describedby="dxWhyCount dxWhyErr">
+            <p class="counter" id="dxWhyCount" aria-live="polite"></p>
+            <p class="err" id="dxWhyErr" aria-live="polite"></p>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="dx.submit"></button>
+        </form>
+
+        <div class="dx-result" id="dxResult" hidden tabindex="-1">
+          <h3 class="dx-result__title" data-i18n="dx.resultTitle"></h3>
+          <img id="dxImage" class="dx-result__img" alt="" width="1080" height="1350">
+          <div class="dx-result__actions">
+            <button type="button" class="btn btn-secondary btn-block" id="dxSave" data-i18n="dx.save"></button>
+            <p class="help" data-i18n="dx.saveHint"></p>
+          </div>
+          <div class="dx-result__ask">
+            <p class="dx-result__askText" data-i18n="dx.ask"></p>
+            <div class="dx-result__links">
+              <a class="btn btn-primary" href="entry.html" data-i18n="dx.toEntry"></a>
+              <a class="btn btn-secondary" id="dxSpeakerLink" href="#speaker" data-i18n="dx.toSpeaker"></a>
+            </div>
+          </div>
+          <button type="button" class="btn btn-ghost" id="dxRetry" data-i18n="dx.retry"></button>
+        </div>
+      </div>
+    </section>
+    <!-- ===== 5. 交流ミッション(独立セクション:削除してもOK) ===== -->
+    <section id="missions" class="section section--tint reveal" aria-labelledby="ms-title">
+      <div class="container">
+        <p class="section__kicker" data-i18n="ms.kicker"></p>
+        <h2 id="ms-title" class="section__title" data-i18n="ms.title"></h2>
+        <p data-i18n="ms.lead"></p>
+
+        <div class="rank card" aria-live="polite">
+          <p class="rank__label" data-i18n="ms.rankLabel"></p>
+          <p class="rank__name" id="msRank"></p>
+          <div class="rank__bar" aria-hidden="true"><span id="msBar"></span></div>
+          <p class="rank__count" id="msCount"></p>
+        </div>
+
+        <ul class="missions" id="msList" role="list"><!-- JSで生成 --></ul>
+
+        <p class="note" data-i18n="ms.storage"></p>
+        <button type="button" class="btn btn-ghost" id="msReset" data-i18n="ms.reset"></button>
+      </div>
+    </section>
+    <section class="next" aria-label="next">
+      <div class="container">
+        <a class="next-card" href="wall.html">
+          <span class="next-card__label" data-i18n="next.label"></span>
+          <span class="next-card__name" data-i18n="hub.wall.name"></span>
+          <span class="next-card__desc" data-i18n="hub.wall.desc"></span>
+        </a>
+      </div>
+    </section>
+  </main>
+  </budoux-ja>
+
+  <footer class="site-footer">
+    <nav class="foot-nav" aria-label="サイト内リンク">
+      <a href="index.html" data-i18n="nav.home"></a>
+      <a href="program.html" data-i18n="nav.program"></a>
+      <a href="play.html" data-i18n="nav.play"></a>
+      <a href="wall.html" data-i18n="nav.wall"></a>
+      <a href="speaker.html" data-i18n="nav.speaker"></a>
+      <a href="entry.html" data-i18n="nav.entry"></a>
+      <a href="faq.html" data-i18n="nav.faq"></a>
+    </nav>
+    <p><a class="intro-replay" href="index.html?intro=1" data-i18n="intro.replay"></a></p>
+    <p><span data-cfg="event.name"></span></p>
+    <p>© <span data-cfg="organizer.name"></span></p>
+  </footer>
+
+  <nav class="tabbar" aria-label="メインメニュー">
+    <a class="tab" href="index.html" data-page-link="home"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/></svg><span class="tab__label" data-i18n="tab.home"></span></a>
+    <a class="tab" href="program.html" data-page-link="program"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg><span class="tab__label" data-i18n="tab.program"></span></a>
+    <a class="tab tab--cta" href="speaker.html" data-page-link="speaker" data-speaker-when="open"><span class="tab__pill"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0"/><path d="M12 18v3"/></svg><span class="tab__label" data-i18n="tab.speaker"></span><span class="tab__sub" data-cd-short></span></span></a>
+    <a class="tab" href="play.html" data-page-link="play wall"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.2 5.3 5.8.5-4.4 3.8 1.4 5.6L12 15.6 7 18.7l1.4-5.6L4 9.3l5.8-.5z"/></svg><span class="tab__label" data-i18n="tab.play"></span></a>
+    <a class="tab" href="entry.html" data-page-link="entry"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5a2 2 0 0 0 0 4v0a2 2 0 0 1 0 4V18h16v-1.5a2 2 0 0 1 0-4v0a2 2 0 0 0 0-4V7H4z" transform="translate(0 -0.5)"/><path d="M14 7v10" stroke-dasharray="1.5 2.2"/></svg><span class="tab__label" data-i18n="tab.entry"></span></a>
+  </nav>
+</body>
+</html>

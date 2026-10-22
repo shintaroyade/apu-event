@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>登壇者募集|APU最大規模プレゼンイベント(仮)</title>
+  <meta name="description" content="あなたの「やってみたい」を6分で話す、個人プレゼンの登壇者を募集しています。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="APU最大規模プレゼンイベント(仮)">
+  <meta property="og:title" content="登壇者募集|APU最大規模プレゼンイベント(仮)">
+  <meta property="og:description" content="あなたの「やってみたい」を6分で話す、個人プレゼンの登壇者を募集しています。">
+  <meta property="og:url" content="https://YOUR-NAME.github.io/apu-event/speaker.html">
+  <meta property="og:image" content="https://YOUR-NAME.github.io/apu-event/ogp.png">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#08080c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/i18n_extra.js" defer></script>
+  <script src="js/budoux-ja.min.js" defer></script>
+  <script src="js/common.js" defer></script>
+  <script src="js/site.js" defer></script>
+  <script src="js/index.js" defer></script>
+  <script src="js/pop.js" defer></script>
+</head>
+<body>
+  <script>document.documentElement.classList.add("js");document.documentElement.dataset.titleKey="meta.speakerTitle";document.addEventListener("DOMContentLoaded",function(){document.body.dataset.page="speaker";document.body.classList.add("has-bar");},{once:true});</script>
+  <a class="skip-link" href="#main" data-i18n="skip"></a>
+  <header class="site-header">
+    <a class="site-header__name" href="index.html"><budoux-ja data-cfg="event.name"></budoux-ja></a>
+    <div class="site-header__tools">
+      <button type="button" id="langToggle" class="lang-toggle" data-i18n="lang.toggle" data-i18n-aria="lang.toggleAria">English</button>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="siteMenu"><span class="menu-btn__bars" aria-hidden="true"></span></button>
+    </div>
+  </header>
+  <nav id="siteMenu" class="site-menu" aria-labelledby="menuLabel" hidden>
+    <p id="menuLabel" class="visually-hidden" data-i18n="menu.label"></p>
+    <ul>
+      <li><a href="index.html" data-page-link="home"><span data-i18n="nav.home"></span></a></li>
+      <li><a href="program.html" data-page-link="program"><span data-i18n="nav.program"></span></a></li>
+      <li><a href="play.html" data-page-link="play"><span data-i18n="nav.play"></span></a></li>
+      <li><a href="wall.html" data-page-link="wall"><span data-i18n="nav.wall"></span></a></li>
+      <li><a href="speaker.html" data-page-link="speaker"><span data-i18n="nav.speaker"></span><span class="menu-tag" data-speaker-when="open" data-i18n="nav.open"></span><span class="menu-tag" data-speaker-when="closed" data-i18n="nav.closed" hidden></span></a></li>
+      <li><a href="entry.html" data-page-link="entry"><span data-i18n="nav.entry"></span></a></li>
+      <li><a href="faq.html" data-page-link="faq"><span data-i18n="nav.faq"></span></a></li>
+    </ul>
+  </nav>
+
+  <budoux-ja>
+  <main id="main">
+    <!-- ===== 登壇者募集(独立セクション) ===== -->
+    <section id="speaker" class="section reveal" aria-labelledby="sp-title">
+      <div class="container">
+        <p class="section__kicker" data-i18n="sp.kicker"></p>
+        <h2 id="sp-title" class="section__title" data-i18n="sp.title"></h2>
+        <p data-i18n="sp.lead"></p>
+        <ul class="chips" role="list">
+          <li class="chip" data-i18n="sp.fact1"></li>
+          <li class="chip" data-i18n="sp.fact2"></li>
+          <li class="chip" data-i18n="sp.fact3"></li>
+        </ul>
+
+        <div class="deadline-box" data-speaker-when="open">
+          <div class="cd" data-countdown>
+            <p class="cd__label" data-i18n="cd.label"></p>
+            <div class="cd__grid" role="timer" aria-live="off">
+              <div class="cd__cell"><span class="cd__num" data-u="d">--</span><span class="cd__unit" data-i18n="cd.d"></span></div>
+              <div class="cd__cell"><span class="cd__num" data-u="h">--</span><span class="cd__unit" data-i18n="cd.h"></span></div>
+              <div class="cd__cell"><span class="cd__num" data-u="m">--</span><span class="cd__unit" data-i18n="cd.m"></span></div>
+              <div class="cd__cell"><span class="cd__num" data-u="s">--</span><span class="cd__unit" data-i18n="cd.s"></span></div>
+            </div>
+            <p class="cd__date" data-cd-until></p>
+          </div>
+        </div>
+        <p class="help" data-i18n="sp.capNote"></p>
+        <p class="help" data-i18n="sp.engNote"></p>
+
+        <h3 class="sub-title" data-i18n="sp.flowTitle"></h3>
+        <ol class="flow">
+          <li><span class="flow__name" data-i18n="sp.step1"></span><span class="flow__desc" data-i18n="sp.step1d"></span></li>
+          <li><span class="flow__name" data-i18n="sp.step2"></span><span class="flow__desc" data-i18n="sp.step2d"></span></li>
+          <li><span class="flow__name" data-i18n="sp.step3"></span><span class="flow__desc" data-i18n="sp.step3d"></span></li>
+          <li><span class="flow__name" data-i18n="sp.step4"></span><span class="flow__desc" data-i18n="sp.step4d"></span></li>
+          <li><span class="flow__name" data-i18n="sp.step5"></span><span class="flow__desc" data-i18n="sp.step5d"></span></li>
+        </ol>
+
+        <div id="spFormWrap" data-speaker-when="open">
+          <h3 class="sub-title" data-i18n="sp.formTitle"></h3>
+          <p class="note note--lock" id="spPrivacy" data-i18n="sp.privacy"></p>
+
+          <!-- CONFIG.links.speakerCall があるときは、こちらのボタンだけを表示 -->
+          <a class="btn btn-primary btn-block" id="spExternal" href="#speaker" hidden data-i18n="sp.external"></a>
+
+          <form id="spForm" class="card form" novalidate>
+            <p class="form__summary" id="spSummary" role="alert" hidden></p>
+
+            <div class="field" data-field="name">
+              <label class="field__label" for="sp-name">
+                <span data-i18n="sp.name"></span><span class="tag tag--req" data-i18n="common.required"></span>
+              </label>
+              <p class="help" id="sp-name-help" data-i18n="sp.nameHelp"></p>
+              <input class="input" id="sp-name" name="name" type="text" maxlength="50" autocomplete="nickname"
+                     data-i18n-placeholder="form.namePlaceholder" aria-describedby="sp-name-help sp-name-err" aria-required="true">
+              <p class="err" id="sp-name-err"></p>
+            </div>
+
+            <div class="field" data-field="aff">
+              <label class="field__label" for="sp-aff">
+                <span data-i18n="form.aff"></span><span class="tag tag--req" data-i18n="common.required"></span>
+              </label>
+              <select class="input select" id="sp-aff" name="aff" aria-describedby="sp-aff-err" aria-required="true">
+                <option value="" data-i18n="form.selectPlaceholder"></option>
+                <option value="aps" data-i18n="form.aff.aps"></option>
+                <option value="apm" data-i18n="form.aff.apm"></option>
+                <option value="grad" data-i18n="form.aff.grad"></option>
+                <option value="intl" data-i18n="form.aff.intl"></option>
+                <option value="staff" data-i18n="form.aff.staff"></option>
+                <option value="other" data-i18n="form.aff.other"></option>
+              </select>
+              <p class="err" id="sp-aff-err"></p>
+            </div>
+
+            <div class="field" data-field="grade">
+              <label class="field__label" for="sp-grade">
+                <span data-i18n="form.grade"></span><span class="tag tag--req" data-i18n="common.required"></span>
+              </label>
+              <select class="input select" id="sp-grade" name="grade" aria-describedby="sp-grade-err" aria-required="true">
+                <option value="" data-i18n="form.selectPlaceholder"></option>
+                <option value="g1" data-i18n="form.grade.g1"></option>
+                <option value="g2" data-i18n="form.grade.g2"></option>
+                <option value="g3" data-i18n="form.grade.g3"></option>
+                <option value="g4" data-i18n="form.grade.g4"></option>
+                <option value="grad" data-i18n="form.grade.grad"></option>
+                <option value="other" data-i18n="form.grade.other"></option>
+              </select>
+              <p class="err" id="sp-grade-err"></p>
+            </div>
+
+            <div class="field" data-field="wish">
+              <label class="field__label" for="sp-wish">
+                <span data-i18n="sp.wish"></span><span class="tag tag--req" data-i18n="common.required"></span>
+              </label>
+              <p class="help" id="sp-wish-help" data-i18n="sp.wishHelp"></p>
+              <input class="input" id="sp-wish" name="wish" type="text" maxlength="100"
+                     data-i18n-placeholder="sp.wishPlaceholder" aria-describedby="sp-wish-help sp-wish-err" aria-required="true">
+              <p class="err" id="sp-wish-err"></p>
+            </div>
+
+            <fieldset class="field" data-field="stage">
+              <legend class="field__label">
+                <span data-i18n="sp.stage"></span><span class="tag tag--opt" data-i18n="common.optional"></span>
+              </legend>
+              <p class="help" data-i18n="sp.stageHelp"></p>
+              <div class="pill-group">
+                <label class="pill"><input type="radio" name="stage" value="clear"><span data-i18n="sp.stage.clear"></span></label>
+                <label class="pill"><input type="radio" name="stage" value="vague"><span data-i18n="sp.stage.vague"></span></label>
+                <label class="pill"><input type="radio" name="stage" value="none"><span data-i18n="sp.stage.none"></span></label>
+              </div>
+            </fieldset>
+
+            <div class="field" data-field="detail">
+              <label class="field__label" for="sp-detail">
+                <span data-i18n="sp.detail"></span><span class="tag tag--opt" data-i18n="common.optional"></span>
+              </label>
+              <p class="help" id="sp-detail-help" data-i18n="sp.detailHelp"></p>
+              <textarea class="input textarea" id="sp-detail" name="detail" rows="4" maxlength="400" aria-describedby="sp-detail-help"></textarea>
+            </div>
+
+            <fieldset class="field" data-field="lang" aria-describedby="sp-lang-err">
+              <legend class="field__label">
+                <span data-i18n="sp.lang"></span><span class="tag tag--req" data-i18n="common.required"></span>
+              </legend>
+              <div class="pill-group">
+                <label class="pill"><input type="radio" name="lang" value="ja"><span data-i18n="sp.lang.ja"></span></label>
+                <label class="pill"><input type="radio" name="lang" value="en"><span data-i18n="sp.lang.en"></span></label>
+                <label class="pill"><input type="radio" name="lang" value="either"><span data-i18n="sp.lang.either"></span></label>
+              </div>
+              <p class="err" id="sp-lang-err"></p>
+            </fieldset>
+
+            <div class="field" data-field="email">
+              <label class="field__label" for="sp-email">
+                <span data-i18n="sp.email"></span><span class="tag tag--req" data-i18n="common.required"></span>
+              </label>
+              <p class="help" id="sp-email-help" data-i18n="sp.emailHelp"></p>
+              <input class="input" id="sp-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254"
+                     data-i18n-placeholder="form.emailPlaceholder" aria-describedby="sp-email-help sp-email-err" aria-required="true">
+              <p class="err" id="sp-email-err"></p>
+            </div>
+
+            <div class="field" data-field="insta">
+              <label class="field__label" for="sp-insta">
+                <span data-i18n="sp.insta"></span><span class="tag tag--opt" data-i18n="common.optional"></span>
+              </label>
+              <p class="help" id="sp-insta-help" data-i18n="sp.instaHelp"></p>
+              <input class="input" id="sp-insta" name="insta" type="text" maxlength="60" placeholder="@account" autocapitalize="none" aria-describedby="sp-insta-help">
+            </div>
+
+            <div class="field" data-field="avail">
+              <label class="field__label" for="sp-avail">
+                <span data-i18n="sp.avail"></span><span class="tag tag--opt" data-i18n="common.optional"></span>
+              </label>
+              <input class="input" id="sp-avail" name="avail" type="text" maxlength="100" data-i18n-placeholder="sp.availPlaceholder">
+            </div>
+
+            <div class="field field--consent" data-field="consent">
+              <p class="consent-note" id="sp-consent-note" data-i18n="sp.consentNote"></p>
+              <label class="check check--consent">
+                <input type="checkbox" id="sp-consent" name="consent" value="yes" aria-describedby="sp-consent-note sp-consent-err" aria-required="true">
+                <span><span data-i18n="sp.consent"></span><span class="tag tag--req" data-i18n="common.required"></span></span>
+              </label>
+              <p class="err" id="sp-consent-err"></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block form__submit" id="spSubmit" data-i18n="sp.submit"></button>
+            <p class="err form__send-err" id="spSendErr" role="alert"></p>
+          </form>
+
+          <div class="card done" id="spDone" hidden tabindex="-1">
+            <div class="done__icon" aria-hidden="true">✓</div>
+            <h3 class="done__title" data-i18n="sp.doneTitle"></h3>
+            <p data-i18n="sp.doneBody"></p>
+            <p class="help" id="spDoneTest" data-i18n="form.doneTest" hidden></p>
+            <a class="btn btn-secondary" href="index.html" data-i18n="form.doneBack"></a>
+          </div>
+        </div>
+
+        <div class="card" id="spClosed" data-speaker-when="closed" hidden>
+          <h3 class="done__title" data-i18n="sp.closedTitle"></h3>
+          <p data-i18n="sp.closedBody"></p>
+          <a class="btn btn-primary" href="entry.html" data-i18n="hero.cta"></a>
+        </div>
+      </div>
+    </section>
+    <section class="next" aria-label="next">
+      <div class="container">
+        <a class="next-card" href="program.html">
+          <span class="next-card__label" data-i18n="next.label"></span>
+          <span class="next-card__name" data-i18n="hub.program.name"></span>
+          <span class="next-card__desc" data-i18n="hub.program.desc"></span>
+        </a>
+      </div>
+    </section>
+  </main>
+  </budoux-ja>
+
+  <footer class="site-footer">
+    <nav class="foot-nav" aria-label="サイト内リンク">
+      <a href="index.html" data-i18n="nav.home"></a>
+      <a href="program.html" data-i18n="nav.program"></a>
+      <a href="play.html" data-i18n="nav.play"></a>
+      <a href="wall.html" data-i18n="nav.wall"></a>
+      <a href="speaker.html" data-i18n="nav.speaker"></a>
+      <a href="entry.html" data-i18n="nav.entry"></a>
+      <a href="faq.html" data-i18n="nav.faq"></a>
+    </nav>
+    <p><a class="intro-replay" href="index.html?intro=1" data-i18n="intro.replay"></a></p>
+    <p><span data-cfg="event.name"></span></p>
+    <p>© <span data-cfg="organizer.name"></span></p>
+  </footer>
+
+  <nav class="tabbar" aria-label="メインメニュー">
+    <a class="tab" href="index.html" data-page-link="home"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/></svg><span class="tab__label" data-i18n="tab.home"></span></a>
+    <a class="tab" href="program.html" data-page-link="program"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg><span class="tab__label" data-i18n="tab.program"></span></a>
+    <a class="tab tab--cta" href="speaker.html" data-page-link="speaker" data-speaker-when="open"><span class="tab__pill"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0"/><path d="M12 18v3"/></svg><span class="tab__label" data-i18n="tab.speaker"></span><span class="tab__sub" data-cd-short></span></span></a>
+    <a class="tab" href="play.html" data-page-link="play wall"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.2 5.3 5.8.5-4.4 3.8 1.4 5.6L12 15.6 7 18.7l1.4-5.6L4 9.3l5.8-.5z"/></svg><span class="tab__label" data-i18n="tab.play"></span></a>
+    <a class="tab" href="entry.html" data-page-link="entry"><svg class="tab__ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5a2 2 0 0 0 0 4v0a2 2 0 0 1 0 4V18h16v-1.5a2 2 0 0 1 0-4v0a2 2 0 0 0 0-4V7H4z" transform="translate(0 -0.5)"/><path d="M14 7v10" stroke-dasharray="1.5 2.2"/></svg><span class="tab__label" data-i18n="tab.entry"></span></a>
+  </nav>
+</body>
+</html>

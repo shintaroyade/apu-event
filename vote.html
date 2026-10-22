@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja" data-title-key="meta.voteTitle">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>共感度投票|APU最大規模プレゼンイベント(仮)</title>
+  <meta name="theme-color" content="#08080c">
+  <!-- 軽さ優先:Webフォントは読み込まず、端末の標準フォントを使います -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/vote.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/common.js" defer></script>
+  <script src="js/vote.js" defer></script>
+</head>
+<body class="vote-page">
+  <header class="v-header">
+    <div class="v-header__text">
+      <p class="v-header__event" data-cfg="event.name"></p>
+      <h1 class="v-header__title" data-i18n="vote.title">共感度投票</h1>
+    </div>
+    <button type="button" id="langToggle" class="lang-toggle" data-i18n="lang.toggle" data-i18n-aria="lang.toggleAria">English</button>
+  </header>
+
+  <main class="v-main">
+    <p class="v-lead" data-i18n="vote.lead"></p>
+
+    <form id="voteForm" class="v-card" novalidate>
+      <!-- ① 発表者 -->
+      <div class="v-field">
+        <label class="v-label" for="vSpeaker"><span class="v-num">1</span><span data-i18n="vote.step1"></span></label>
+        <select id="vSpeaker" class="input select" aria-describedby="vSpeakerErr vVoted"><!-- JSで生成 --></select>
+        <p class="v-info" id="vVoted" hidden data-i18n="vote.voted"></p>
+        <p class="err" id="vSpeakerErr"></p>
+      </div>
+
+      <!-- ② 共感度(5段階のハート) -->
+      <fieldset class="v-field" aria-describedby="vRatingErr">
+        <legend class="v-label"><span class="v-num">2</span><span data-i18n="vote.step2"></span></legend>
+        <div class="hearts" id="vHearts"><!-- JSで生成 --></div>
+        <div class="hearts__scale" aria-hidden="true"><span data-i18n="vote.low"></span><span data-i18n="vote.high"></span></div>
+        <p class="err" id="vRatingErr"></p>
+      </fieldset>
+
+      <!-- ③ ひとことコメント(任意) -->
+      <div class="v-field">
+        <label class="v-label" for="vComment">
+          <span class="v-num">3</span><span data-i18n="vote.step3"></span><span class="v-opt" data-i18n="common.optional"></span>
+        </label>
+        <textarea id="vComment" class="input v-textarea" rows="2" maxlength="60" data-i18n-placeholder="vote.commentPlaceholder" aria-describedby="vCount"></textarea>
+        <p class="v-count" id="vCount">0/60</p>
+      </div>
+
+      <!-- ④ 送信 -->
+      <button type="submit" class="btn btn-primary btn-block v-submit" id="vSubmit" data-i18n="vote.submit"></button>
+      <p class="err v-send-err" id="vSendErr" role="alert"></p>
+    </form>
+
+    <!-- 送信後 -->
+    <div class="v-card v-thanks" id="vThanks" hidden tabindex="-1">
+      <p class="v-thanks__icon" aria-hidden="true">♥</p>
+      <h2 class="v-thanks__title" data-i18n="vote.thanks"></h2>
+      <p data-i18n="vote.thanksBody"></p>
+      <p class="v-thanks__test" id="vThanksTest" hidden data-i18n="form.doneTest"></p>
+      <button type="button" class="btn btn-primary btn-block" id="vNext" data-i18n="vote.next"></button>
+    </div>
+
+    <p class="v-privacy" data-i18n="vote.privacy"></p>
+  </main>
+</body>
+</html>
