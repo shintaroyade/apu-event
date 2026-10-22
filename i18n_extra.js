@@ -36,7 +36,7 @@ Object.assign(I18N.ja, {
   "cd.closed": "募集は終了しました",
 
   "recruit.tag": "募集中",
-  "recruit.title": "「やってみたい」を、\n6分で話しませんか?",
+  "recruit.title": "「やってみたい」を、\n5分で話しませんか?",
   "recruit.lead": "定員10人・英語OK・メンターが伴走します",
   "recruit.cta": "プレゼンターに応募する",
 
@@ -93,7 +93,7 @@ Object.assign(I18N.en, {
   "cd.closed": "Applications are closed",
 
   "recruit.tag": "OPEN",
-  "recruit.title": "Want to share your\n\"I want to try\"\nin six minutes?",
+  "recruit.title": "Want to share your\n\"I want to try\"\nin five minutes?",
   "recruit.lead": "10 spots · English welcome · a mentor works with you",
   "recruit.cta": "Apply to present",
 
@@ -188,7 +188,7 @@ Object.assign(I18N.ja, {
   "pop.count": "SHOUT {n}",
   "pop.s1": "やってみたい!", "pop.s2": "言葉にしたい!", "pop.s3": "挑戦する!", "pop.s4": "もう迷わない!", "pop.s5": "世界に届け!", "pop.s6": "最初の一歩!",
   "pop.m1": "声に出すと、少し軽くなるよね。その言葉を、ステージで話してみない?",
-  "pop.m2": "いい叫びっぷり! あとはそれを6分に詰めるだけ",
+  "pop.m2": "いい叫びっぷり! あとはそれを5分に詰めるだけ",
   "pop.m3": "もう十分たまってるはず。登壇で、思いっきり叫ぼう"
 });
 Object.assign(I18N.en, {
@@ -196,7 +196,7 @@ Object.assign(I18N.en, {
   "pop.count": "SHOUT {n}",
   "pop.s1": "I want to try!", "pop.s2": "Say it out loud!", "pop.s3": "Let's go!", "pop.s4": "No more hesitating!", "pop.s5": "Reach the world!", "pop.s6": "First step!",
   "pop.m1": "Feels a bit lighter to say it out loud, right? Why not say it on stage?",
-  "pop.m2": "Great shout! All that's left is to fit it into six minutes",
+  "pop.m2": "Great shout! All that's left is to fit it into five minutes",
   "pop.m3": "You've got plenty stored up. Shout it for real at the event"
 });
 
