@@ -36,7 +36,7 @@ const CONFIG = {
 
   /* ---------- 主催者・問い合わせ先 ---------- */
   organizer: {
-    name: { ja: "森山慎太郎", en: "Shintaro Moriyama" },
+    name: { ja: "NEXT SPARK JAPAN 森山慎太郎", en: "NEXT SPARK JAPAN / Shintaro Moriyama" },
     instagram: "@nextsparkjapan / @shintaroyade",
     instagrams: [
       { label: "@nextsparkjapan", url: "https://www.instagram.com/nextsparkjapan/" },
