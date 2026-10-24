@@ -52,7 +52,7 @@ const CONFIG = {
    * どこにも送信しません。GASをデプロイしたら、発行された /exec のURLを貼ってください。
    * 例: "https://script.google.com/macros/s/XXXXXXXX/exec"
    */
-  endpoint: "",
+  endpoint: "https://script.google.com/macros/s/AKfycby52x8HCH-GQjHI4rfLXNFXdA_mSjzWa-ioukG7xRTFMxlz_fATW73Y0GuvcFhFc3KB/exec",
 
   /* ---------- 共感度投票:現在の発表者 ----------
    * 下の speakers の id を指定すると、投票画面を開いたときの初期選択になります。
