@@ -412,6 +412,72 @@ html:not([lang="en"]) .intro__line, html:not([lang="en"]) .intro__line .ch { whi
 @media (max-height: 600px) { .intro__cap { font-size: 11.5px; } .intro__flagtrack { font-size: 18px; } }
 @media (max-height: 520px) { .intro__cap, .intro__bands { display: none; } }
 
-/* サブタイトル(イベント名の下) */
-.hero__subtitle { margin: -6px 0 16px; font-size: clamp(14px, 4vw, 17px); font-weight: 700; letter-spacing: .08em; color: var(--c-pink, #ff2e97); }
-.hero__title { white-space: nowrap; }
+/* 「その他」選択時の自由入力欄 */
+.other-input { margin-top: 8px; }
+
+/* =========================================================================
+ * ロゴ「UNMUTE to ACTION」とキャッチコピー
+ *  UN … 消音中のように暗い輪郭 → ネオンが点くように点灯
+ *  ACTION … ピンクで発光。下に音声の波形バー
+ * ========================================================================= */
+.logo {
+  margin: 0 0 18px; font-family: var(--font-tech); font-weight: 600;
+  line-height: .9; letter-spacing: .01em; text-transform: uppercase;
+  font-size: clamp(54px, 18.5vw, 78px);
+}
+.logo__row { display: flex; align-items: baseline; white-space: nowrap; }
+.logo__row--2 { margin-top: .04em; }
+.logo__un {
+  color: transparent; -webkit-text-stroke: 1.5px var(--c-ink);
+  animation: un-ignite 2.6s steps(1, end) .6s both;
+}
+.logo__mute { color: var(--c-ink); }
+.logo__to {
+  margin-right: .14em; font-size: .38em; font-weight: 500; font-style: italic; letter-spacing: .04em; text-transform: none;
+  color: var(--c-primary-soft); transform: translateY(-.12em);
+}
+.logo__action {
+  color: var(--c-primary);
+  text-shadow: 0 0 .18em var(--c-glow), 0 0 .5em rgba(255, 46, 151, .35);
+}
+/* 「UN」が点滅しながら点灯 */
+@keyframes un-ignite {
+  0%   { color: transparent; -webkit-text-stroke-color: var(--c-dim); text-shadow: none; }
+  30%  { color: var(--c-ink); text-shadow: 0 0 .25em var(--c-glow); }
+  34%  { color: transparent; text-shadow: none; }
+  44%  { color: var(--c-ink); text-shadow: 0 0 .25em var(--c-glow); }
+  48%  { color: transparent; text-shadow: none; }
+  60%, 100% { color: var(--c-ink); -webkit-text-stroke-color: var(--c-ink); text-shadow: 0 0 .12em rgba(255, 255, 255, .25); }
+}
+
+.tagline {
+  display: flex; align-items: center; gap: 12px; margin: 0 0 22px;
+  font-size: clamp(18px, 5vw, 21px); font-weight: 900; letter-spacing: .14em; line-height: 1.4;
+}
+.tagline__wave { display: inline-flex; align-items: center; gap: 3px; height: 22px; flex: none; }
+.tagline__wave i {
+  display: block; width: 3px; height: 100%; border-radius: 2px; background: var(--c-primary);
+  box-shadow: 0 0 6px var(--c-glow); transform-origin: center; animation: wave 1.1s ease-in-out infinite;
+}
+.tagline__wave i:nth-child(1) { animation-delay: -.9s; }
+.tagline__wave i:nth-child(2) { animation-delay: -.3s; }
+.tagline__wave i:nth-child(3) { animation-delay: -.6s; }
+.tagline__wave i:nth-child(4) { animation-delay: -.1s; }
+.tagline__wave i:nth-child(5) { animation-delay: -.75s; }
+@keyframes wave { 0%, 100% { transform: scaleY(.25); } 50% { transform: scaleY(1); } }
+html[lang="en"] .tagline { letter-spacing: .04em; font-size: clamp(16px, 4.4vw, 19px); }
+
+/* キャッチコピーが主役なので、コンセプト文は一段控えめに */
+.hero__concept { font-size: clamp(16px, 4.3vw, 18px); color: var(--c-ink); text-shadow: none; font-weight: 700; }
+
+/* ヘッダーのイベント名もロゴ書体に */
+.site-header__name { font-family: var(--font-tech); font-weight: 600; font-size: 15px; letter-spacing: .06em; }
+
+@media (min-width: 700px) {
+  .logo { font-size: 78px; }
+  .hero__concept { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo__un { color: var(--c-ink); }
+  .tagline__wave i { transform: scaleY(.6); }
+}

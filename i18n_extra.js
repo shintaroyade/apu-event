@@ -47,7 +47,7 @@ Object.assign(I18N.ja, {
   "hub.program.name": "当日の流れ",
   "hub.program.desc": "3時間のプログラムを、気になるところから探検",
   "hub.play.name": "あそぶ",
-  "hub.play.desc": "タイプ診断とミッションで、イベントを先取り",
+  "hub.play.desc": "タイプ診断と、みんなのやってみたい",
   "hub.entry.name": "参加申込",
   "hub.entry.desc": "聴くだけでもOK。参加は無料です",
   "hub.faq.name": "よくある質問",
@@ -61,12 +61,12 @@ Object.assign(I18N.ja, {
 
 Object.assign(I18N.en, {
   "skip": "Skip to main content",
-  "meta.homeTitle": "APU's Largest Presentation Event (tentative) | Presenters wanted",
-  "meta.programTitle": "Program | APU's Largest Presentation Event (tentative)",
-  "meta.playTitle": "Play | APU's Largest Presentation Event (tentative)",
-  "meta.speakerTitle": "Call for presenters | APU's Largest Presentation Event (tentative)",
-  "meta.entryTitle": "Register | APU's Largest Presentation Event (tentative)",
-  "meta.faqTitle": "FAQ & Contact | APU's Largest Presentation Event (tentative)",
+  "meta.homeTitle": "UNMUTE to ACTION | Presenters wanted",
+  "meta.programTitle": "Program | UNMUTE to ACTION",
+  "meta.playTitle": "Play | UNMUTE to ACTION",
+  "meta.speakerTitle": "Call for presenters | UNMUTE to ACTION",
+  "meta.entryTitle": "Register | UNMUTE to ACTION",
+  "meta.faqTitle": "FAQ & Contact | UNMUTE to ACTION",
 
   "nav.home": "Home",
   "nav.program": "Program",
@@ -104,7 +104,7 @@ Object.assign(I18N.en, {
   "hub.program.name": "Program",
   "hub.program.desc": "Explore the 3-hour program, starting wherever you like",
   "hub.play.name": "Play",
-  "hub.play.desc": "A type quiz and missions to get ready for the day",
+  "hub.play.desc": "A type quiz and everyone's \"I want to try\"",
   "hub.entry.name": "Register",
   "hub.entry.desc": "Just listening is fine. It's free",
   "hub.faq.name": "FAQ",
@@ -124,7 +124,7 @@ Object.assign(I18N.ja, {
   "form.publish": "このひとことを、お名前(ニックネームOK)と一緒に、このサイトの「みんなのやってみたい」に載せてもいい",
   "form.publishHelp": "任意です。運営が内容を確認してから掲載します。チェックしなくても、参加には影響しません。",
 
-  "wall.kicker": "遊べるコンテンツ 04",
+  "wall.kicker": "遊べるコンテンツ 03",
   "wall.title": "みんなのやってみたい",
   "wall.lead": "参加する人の「今やってみたいこと」を、ひとこと集めました。気になる言葉に♥をつけてみてください。当日の会話のきっかけになるかもしれません。",
   "wall.demo": "いまは見た目の確認用に、サンプルを表示しています。",
@@ -150,14 +150,14 @@ Object.assign(I18N.ja, {
 });
 
 Object.assign(I18N.en, {
-  "meta.wallTitle": "Everyone's \"I want to try\" | APU's Largest Presentation Event (tentative)",
+  "meta.wallTitle": "Everyone's \"I want to try\" | UNMUTE to ACTION",
   "nav.wall": "Everyone's \"I want to try\"",
   "hub.wall.name": "Everyone's \"I want to try\"",
   "hub.wall.desc": "One line from each participant. Yours might be here too",
   "form.publish": "You may show my one line, with my name (a nickname is fine), on this site's \"Everyone's I want to try\" page",
   "form.publishHelp": "Optional. The organizers review it before it is shown. Leaving it unchecked doesn't affect your registration.",
 
-  "wall.kicker": "Play 04",
+  "wall.kicker": "Play 03",
   "wall.title": "Everyone's \"I want to try\"",
   "wall.lead": "One line each from the people joining, about what they want to try right now. Tap ♥ on the ones that speak to you. They might start a conversation on the day.",
   "wall.demo": "These are samples, shown so you can check the look for now.",

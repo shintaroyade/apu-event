@@ -29,6 +29,7 @@
   <script src="site.js" defer></script>
   <script src="index.js" defer></script>
   <script src="pop.js" defer></script>
+  <script src="wall.js" defer></script>
 </head>
 <body>
   <script>document.documentElement.classList.add("js");document.documentElement.dataset.titleKey="meta.playTitle";document.addEventListener("DOMContentLoaded",function(){document.body.dataset.page="play";document.body.classList.add("has-bar");},{once:true});</script>
@@ -46,7 +47,6 @@
       <li><a href="index.html" data-page-link="home"><span data-i18n="nav.home"></span></a></li>
       <li><a href="program.html" data-page-link="program"><span data-i18n="nav.program"></span></a></li>
       <li><a href="play.html" data-page-link="play"><span data-i18n="nav.play"></span></a></li>
-      <li><a href="wall.html" data-page-link="wall"><span data-i18n="nav.wall"></span></a></li>
       <li><a href="speaker.html" data-page-link="speaker"><span data-i18n="nav.speaker"></span><span class="menu-tag" data-speaker-when="open" data-i18n="nav.open"></span><span class="menu-tag" data-speaker-when="closed" data-i18n="nav.closed" hidden></span></a></li>
       <li><a href="entry.html" data-page-link="entry"><span data-i18n="nav.entry"></span></a></li>
       <li><a href="faq.html" data-page-link="faq"><span data-i18n="nav.faq"></span></a></li>
@@ -59,8 +59,7 @@
       <div class="container">
         <ul class="play-nav__list" role="list">
           <li><a class="play-nav__link" href="#diagnosis" data-i18n="play.nav.dx"></a></li>
-          <li><a class="play-nav__link" href="#missions" data-i18n="play.nav.ms"></a></li>
-          <li><a class="play-nav__link" href="wall.html" data-i18n="nav.wall"></a></li>
+          <li><a class="play-nav__link" href="#wall" data-i18n="nav.wall"></a></li>
         </ul>
       </div>
     </nav>
@@ -127,32 +126,29 @@
         </div>
       </div>
     </section>
-    <!-- ===== 5. 交流ミッション(独立セクション:削除してもOK) ===== -->
-    <section id="missions" class="section section--tint reveal" aria-labelledby="ms-title">
+    <!-- ===== 5. みんなのやってみたい ===== -->
+    <section id="wall" class="section section--tint reveal" aria-labelledby="wall-title">
       <div class="container">
-        <p class="section__kicker" data-i18n="ms.kicker"></p>
-        <h2 id="ms-title" class="section__title" data-i18n="ms.title"></h2>
-        <p data-i18n="ms.lead"></p>
-
-        <div class="rank card" aria-live="polite">
-          <p class="rank__label" data-i18n="ms.rankLabel"></p>
-          <p class="rank__name" id="msRank"></p>
-          <div class="rank__bar" aria-hidden="true"><span id="msBar"></span></div>
-          <p class="rank__count" id="msCount"></p>
+        <p class="section__kicker" data-i18n="wall.kicker"></p>
+        <h2 id="wall-title" class="section__title" data-i18n="wall.title"></h2>
+        <p data-i18n="wall.lead"></p>
+        <p class="note" id="wallDemo" hidden data-i18n="wall.demo"></p>
+        <div class="wall-tools"><button type="button" class="btn btn-secondary" id="wallShuffle" data-i18n="wall.shuffle"></button></div>
+        <p class="help wall-status" id="wallStatus" role="status" hidden></p>
+        <ul class="wall" id="wallList" role="list"></ul>
+        <div class="card wall-how">
+          <h3 class="sub-title" data-i18n="wall.howTitle"></h3>
+          <p data-i18n="wall.howBody"></p>
+          <a class="btn btn-primary btn-block" href="entry.html" data-i18n="wall.cta"></a>
         </div>
-
-        <ul class="missions" id="msList" role="list"><!-- JSで生成 --></ul>
-
-        <p class="note" data-i18n="ms.storage"></p>
-        <button type="button" class="btn btn-ghost" id="msReset" data-i18n="ms.reset"></button>
       </div>
     </section>
     <section class="next" aria-label="next">
       <div class="container">
-        <a class="next-card" href="wall.html">
+        <a class="next-card" href="entry.html">
           <span class="next-card__label" data-i18n="next.label"></span>
-          <span class="next-card__name" data-i18n="hub.wall.name"></span>
-          <span class="next-card__desc" data-i18n="hub.wall.desc"></span>
+          <span class="next-card__name" data-i18n="hub.entry.name"></span>
+          <span class="next-card__desc" data-i18n="hub.entry.desc"></span>
         </a>
       </div>
     </section>
@@ -164,7 +160,6 @@
       <a href="index.html" data-i18n="nav.home"></a>
       <a href="program.html" data-i18n="nav.program"></a>
       <a href="play.html" data-i18n="nav.play"></a>
-      <a href="wall.html" data-i18n="nav.wall"></a>
       <a href="speaker.html" data-i18n="nav.speaker"></a>
       <a href="entry.html" data-i18n="nav.entry"></a>
       <a href="faq.html" data-i18n="nav.faq"></a>

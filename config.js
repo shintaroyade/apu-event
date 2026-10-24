@@ -15,6 +15,11 @@ const CONFIG = {
       ja: "UNMUTE to ACTION",
       en: "UNMUTE to ACTION"
     },
+    // キャッチコピー(トップのロゴの下に表示)
+    tagline: {
+      ja: "その声で次をつくれ",
+      en: "Make what's next with your voice"
+    },
     subtitle: {
       ja: "〜その声で次をつくれ〜",
       en: "~ Turn your voice into what's next ~"
@@ -31,7 +36,7 @@ const CONFIG = {
 
   /* ---------- 主催者・問い合わせ先 ---------- */
   organizer: {
-    name: { ja: "NEXT SPARK JAPAN 森山慎太郎", en: "NEXT SPARK JAPAN / Shintaro Moriyama" },
+    name: { ja: "森山慎太郎", en: "Shintaro Moriyama" },
     instagram: "@nextsparkjapan / @shintaroyade",
     instagrams: [
       { label: "@nextsparkjapan", url: "https://www.instagram.com/nextsparkjapan/" },
@@ -90,8 +95,8 @@ const CONFIG = {
     { id: "change",  min: "5",  kind: "other" },
     { id: "talk2",   min: "30", kind: "talk" },
     { id: "break",   min: "10", kind: "other" },
-    { id: "group",   min: { ja: "15〜20", en: "15–20" }, kind: "group" },
-    { id: "mingle",  min: { ja: "45〜50", en: "45–50" }, kind: "mingle" },
+    { id: "group",   min: "25", kind: "group" },
+    { id: "mingle",  min: "40", kind: "mingle" },
     { id: "closing", min: "10", kind: "other" }
   ],
 

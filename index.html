@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>UNMUTE to ACTION|登壇者募集中</title>
-  <meta name="description" content="1Qで芽生えた情熱を、言葉にして世界に叫ぶ。APU生の「やってみたい」が集まるプレゼンイベントです。登壇者募集中。">
+  <meta name="description" content="UNMUTE to ACTION ─ その声で次をつくれ。1Qで芽生えた情熱を、言葉にして世界に叫ぶ。APU生の「やってみたい」が集まるプレゼンイベントです。登壇者募集中。">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="UNMUTE to ACTION">
   <meta property="og:title" content="UNMUTE to ACTION|登壇者募集中">
-  <meta property="og:description" content="1Qで芽生えた情熱を、言葉にして世界に叫ぶ。APU生の「やってみたい」が集まるプレゼンイベントです。登壇者募集中。">
+  <meta property="og:description" content="UNMUTE to ACTION ─ その声で次をつくれ。1Qで芽生えた情熱を、言葉にして世界に叫ぶ。APU生の「やってみたい」が集まるプレゼンイベントです。登壇者募集中。">
   <meta property="og:url" content="https://shintaroyade.github.io/apu-event/index.html">
   <meta property="og:image" content="https://shintaroyade.github.io/apu-event/ogp.png">
   <meta property="og:locale" content="ja_JP">
@@ -78,7 +78,6 @@
       <li><a href="index.html" data-page-link="home"><span data-i18n="nav.home"></span></a></li>
       <li><a href="program.html" data-page-link="program"><span data-i18n="nav.program"></span></a></li>
       <li><a href="play.html" data-page-link="play"><span data-i18n="nav.play"></span></a></li>
-      <li><a href="wall.html" data-page-link="wall"><span data-i18n="nav.wall"></span></a></li>
       <li><a href="speaker.html" data-page-link="speaker"><span data-i18n="nav.speaker"></span><span class="menu-tag" data-speaker-when="open" data-i18n="nav.open"></span><span class="menu-tag" data-speaker-when="closed" data-i18n="nav.closed" hidden></span></a></li>
       <li><a href="entry.html" data-page-link="entry"><span data-i18n="nav.entry"></span></a></li>
       <li><a href="faq.html" data-page-link="faq"><span data-i18n="nav.faq"></span></a></li>
@@ -98,8 +97,14 @@
       <canvas class="pop-canvas" aria-hidden="true"></canvas>
       <div class="hero__inner">
         <p class="hero__eyebrow fade-in" style="--d:.05s" data-i18n="hero.eyebrow"></p>
-        <h1 id="hero-title" class="hero__title fade-in" style="--d:.15s"><budoux-ja data-cfg="event.name"></budoux-ja></h1>
-        <p class="hero__subtitle fade-in" style="--d:.22s" data-cfg="event.subtitle"></p>
+        <h1 id="hero-title" class="logo fade-in" style="--d:.15s" aria-label="UNMUTE to ACTION">
+          <span class="logo__row" aria-hidden="true"><span class="logo__un">UN</span><span class="logo__mute">MUTE</span></span>
+          <span class="logo__row logo__row--2" aria-hidden="true"><span class="logo__to">to</span><span class="logo__action">ACTION</span></span>
+        </h1>
+        <p class="tagline fade-in" style="--d:.25s">
+          <span class="tagline__wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="tagline__text" data-cfg="event.tagline"></span>
+        </p>
         <p class="hero__concept fade-in" style="--d:.3s" data-i18n="hero.concept"></p>
         <dl class="hero__info fade-in" style="--d:.45s">
           <div><dt data-i18n="hero.dateLabel"></dt><dd data-cfg="event.date"></dd></div>
@@ -154,7 +159,7 @@
         <ul class="hub" role="list">
           <li><a class="hub-card" href="program.html"><span class="hub-card__no">01</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.program.name"></span><span class="hub-card__desc" data-i18n="hub.program.desc"></span></span></a></li>
           <li><a class="hub-card" href="play.html"><span class="hub-card__no">02</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.play.name"></span><span class="hub-card__desc" data-i18n="hub.play.desc"></span></span></a></li>
-          <li><a class="hub-card" href="wall.html"><span class="hub-card__no">03</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.wall.name"></span><span class="hub-card__desc" data-i18n="hub.wall.desc"></span></span></a></li>
+          <li><a class="hub-card" href="play.html#wall"><span class="hub-card__no">03</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.wall.name"></span><span class="hub-card__desc" data-i18n="hub.wall.desc"></span></span></a></li>
           <li><a class="hub-card" href="entry.html"><span class="hub-card__no">04</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.entry.name"></span><span class="hub-card__desc" data-i18n="hub.entry.desc"></span></span></a></li>
           <li><a class="hub-card" href="faq.html"><span class="hub-card__no">05</span><span class="hub-card__text"><span class="hub-card__name" data-i18n="hub.faq.name"></span><span class="hub-card__desc" data-i18n="hub.faq.desc"></span></span></a></li>
         </ul>
@@ -168,7 +173,6 @@
       <a href="index.html" data-i18n="nav.home"></a>
       <a href="program.html" data-i18n="nav.program"></a>
       <a href="play.html" data-i18n="nav.play"></a>
-      <a href="wall.html" data-i18n="nav.wall"></a>
       <a href="speaker.html" data-i18n="nav.speaker"></a>
       <a href="entry.html" data-i18n="nav.entry"></a>
       <a href="faq.html" data-i18n="nav.faq"></a>

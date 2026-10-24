@@ -46,7 +46,6 @@
       <li><a href="index.html" data-page-link="home"><span data-i18n="nav.home"></span></a></li>
       <li><a href="program.html" data-page-link="program"><span data-i18n="nav.program"></span></a></li>
       <li><a href="play.html" data-page-link="play"><span data-i18n="nav.play"></span></a></li>
-      <li><a href="wall.html" data-page-link="wall"><span data-i18n="nav.wall"></span></a></li>
       <li><a href="speaker.html" data-page-link="speaker"><span data-i18n="nav.speaker"></span><span class="menu-tag" data-speaker-when="open" data-i18n="nav.open"></span><span class="menu-tag" data-speaker-when="closed" data-i18n="nav.closed" hidden></span></a></li>
       <li><a href="entry.html" data-page-link="entry"><span data-i18n="nav.entry"></span></a></li>
       <li><a href="faq.html" data-page-link="faq"><span data-i18n="nav.faq"></span></a></li>
@@ -85,11 +84,17 @@
               <option value="" data-i18n="form.selectPlaceholder"></option>
               <option value="aps" data-i18n="form.aff.aps"></option>
               <option value="apm" data-i18n="form.aff.apm"></option>
+              <option value="st" data-i18n="form.aff.st"></option>
               <option value="grad" data-i18n="form.aff.grad"></option>
               <option value="intl" data-i18n="form.aff.intl"></option>
               <option value="staff" data-i18n="form.aff.staff"></option>
               <option value="other" data-i18n="form.aff.other"></option>
             </select>
+            <div class="other-input" id="f-aff-other-wrap" hidden>
+              <label class="visually-hidden" for="f-aff-other" data-i18n="form.affOtherLabel"></label>
+              <input class="input" id="f-aff-other" name="affiliationOther" type="text" maxlength="50"
+                     data-i18n-placeholder="form.affOtherPlaceholder" aria-describedby="f-aff-err">
+            </div>
             <p class="err" id="f-aff-err"></p>
           </div>
 
@@ -107,10 +112,15 @@
               <option value="grad" data-i18n="form.grade.grad"></option>
               <option value="other" data-i18n="form.grade.other"></option>
             </select>
+            <div class="other-input" id="f-grade-other-wrap" hidden>
+              <label class="visually-hidden" for="f-grade-other" data-i18n="form.gradeOtherLabel"></label>
+              <input class="input" id="f-grade-other" name="gradeOther" type="text" maxlength="50"
+                     data-i18n-placeholder="form.gradeOtherPlaceholder" aria-describedby="f-grade-err">
+            </div>
             <p class="err" id="f-grade-err"></p>
           </div>
 
-          <!-- 来場予定の時間帯 -->
+          <!-- 参加予定のセッション -->
           <fieldset class="field" data-field="slots" aria-describedby="f-slots-help f-slots-err">
             <legend class="field__label">
               <span data-i18n="form.slots"></span><span class="tag tag--req" data-i18n="common.required"></span>
@@ -143,11 +153,11 @@
           <!-- メールアドレス -->
           <div class="field" data-field="email">
             <label class="field__label" for="f-email">
-              <span data-i18n="form.email"></span><span class="tag tag--opt" data-i18n="common.optional"></span>
+              <span data-i18n="form.email"></span><span class="tag tag--req" data-i18n="common.required"></span>
             </label>
             <p class="help" id="f-email-help" data-i18n="form.emailHelp"></p>
             <input class="input" id="f-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254"
-                   data-i18n-placeholder="form.emailPlaceholder" aria-describedby="f-email-help f-email-err">
+                   data-i18n-placeholder="form.emailPlaceholder" aria-describedby="f-email-help f-email-err" aria-required="true">
             <p class="err" id="f-email-err"></p>
           </div>
 
@@ -219,7 +229,6 @@
       <a href="index.html" data-i18n="nav.home"></a>
       <a href="program.html" data-i18n="nav.program"></a>
       <a href="play.html" data-i18n="nav.play"></a>
-      <a href="wall.html" data-i18n="nav.wall"></a>
       <a href="speaker.html" data-i18n="nav.speaker"></a>
       <a href="entry.html" data-i18n="nav.entry"></a>
       <a href="faq.html" data-i18n="nav.faq"></a>

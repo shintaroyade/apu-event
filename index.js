@@ -431,15 +431,43 @@
 
     const el = {
       name: $("#f-name"), affiliation: $("#f-aff"), grade: $("#f-grade"),
-      companions: $("#f-comp"), email: $("#f-email"), wish: $("#f-wish"), consent: $("#f-consent")
+      companions: $("#f-comp"), email: $("#f-email"), wish: $("#f-wish"), consent: $("#f-consent"),
+      affOther: $("#f-aff-other"), gradeOther: $("#f-grade-other")
+    };
+
+    // 「その他」を選んだときだけ、自由入力欄を出す
+    const otherPairs = [
+      { sel: el.affiliation, input: el.affOther, wrap: $("#f-aff-other-wrap"), field: "affiliation" },
+      { sel: el.grade, input: el.gradeOther, wrap: $("#f-grade-other-wrap"), field: "grade" }
+    ];
+    otherPairs.forEach(o => {
+      const sync = focus => {
+        const on = o.sel.value === "other";
+        o.wrap.hidden = !on;
+        o.input.setAttribute("aria-required", on ? "true" : "false");
+        if (on && focus) o.input.focus();
+      };
+      o.sel.addEventListener("change", () => sync(true));
+      o.input.addEventListener("input", () => { if (tried || o.sel.hasAttribute("aria-invalid")) check(o.field); });
+      o.input.addEventListener("blur", () => { o.input.dataset.touched = "1"; check(o.field); });
+      sync(false);
+    });
+    const selectRule = (sel, input) => {
+      if (!sel.value) return "form.err.select";
+      if (sel.value === "other" && !input.value.trim() && (tried || input.dataset.touched)) return "form.err.other";
+      return "";
+    };
+    const selectLabel = (prefix, sel, input) => {
+      const base = tIn("ja", prefix + sel.value);
+      return sel.value === "other" ? base + "(" + input.value.trim() + ")" : base;
     };
     const checked = name => $$(`input[name="${name}"]:checked`, form).map(i => i.value);
 
     // 各項目のチェック(エラーの文言キーを返す。問題なければ "")
     const rules = {
       name:        () => el.name.value.trim() ? "" : "form.err.required",
-      affiliation: () => el.affiliation.value ? "" : "form.err.select",
-      grade:       () => el.grade.value ? "" : "form.err.select",
+      affiliation: () => selectRule(el.affiliation, el.affOther),
+      grade:       () => selectRule(el.grade, el.gradeOther),
       slots:       () => checked("slots").length ? "" : "form.err.slots",
       companions:  () => {
         const v = el.companions.value.trim();
@@ -449,7 +477,8 @@
       },
       email:       () => {
         const v = el.email.value.trim();
-        return v === "" || EMAIL_RE.test(v) ? "" : "form.err.email";
+        if (!v) return "form.err.required";
+        return EMAIL_RE.test(v) ? "" : "form.err.email";
       },
       consent:     () => el.consent.checked ? "" : "form.err.consent"
     };
@@ -513,7 +542,9 @@
       const bad = checkAll();
       if (bad.length) {
         const first = targets[bad[0]];
-        const focusEl = first.tagName === "FIELDSET" ? $("input", first) : first;
+        let focusEl = first.tagName === "FIELDSET" ? $("input", first) : first;
+        const op = otherPairs.find(o => o.sel === first && o.sel.value === "other");
+        if (op) focusEl = op.input;
         first.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "center" });
         focusEl.focus({ preventScroll: true });
         return;
@@ -523,8 +554,8 @@
       const label = key => tIn("ja", key);
       const data = {
         name: el.name.value.trim(),
-        affiliation: label("form.aff." + el.affiliation.value),
-        grade: label("form.grade." + el.grade.value),
+        affiliation: selectLabel("form.aff.", el.affiliation, el.affOther),
+        grade: selectLabel("form.grade.", el.grade, el.gradeOther),
         slots: checked("slots").map(v => label("form.slot." + v)).join(" / "),
         companions: el.companions.value.trim() === "" ? "" : Number(el.companions.value),
         email: el.email.value.trim(),
@@ -565,19 +596,17 @@
   function initContact() {
     const insta = $("#contactInsta"), mail = $("#contactEmail");
     const o = CONFIG.organizer;
-    if (insta && Array.isArray(o.instagrams) && o.instagrams.length) {
-      o.instagrams.forEach((it, i) => {
-        if (i) insta.appendChild(document.createTextNode(" / "));
-        const a = document.createElement("a");
-        a.href = it.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = it.label;
-        insta.appendChild(a);
+    if (insta) {
+      const list = Array.isArray(o.instagrams) && o.instagrams.length ? o.instagrams.map(x => ({ handle: x.label, url: x.url }))
+        : Array.isArray(o.instagram) ? o.instagram : [{ handle: o.instagram, url: o.instagramUrl }];
+      list.forEach((ig, i) => {
+        if (i) insta.appendChild(document.createElement("br"));
+        if (ig.url) {
+          const a = document.createElement("a");
+          a.href = ig.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = ig.handle;
+          insta.appendChild(a);
+        } else insta.appendChild(document.createTextNode(ig.handle));
       });
-    } else if (insta) {
-      if (o.instagramUrl) {
-        const a = document.createElement("a");
-        a.href = o.instagramUrl; a.target = "_blank"; a.rel = "noopener"; a.textContent = o.instagram;
-        insta.appendChild(a);
-      } else insta.textContent = o.instagram;
     }
     if (mail) {
       if (/^[^\s@【]+@[^\s@]+$/.test(o.email)) {
