@@ -47,13 +47,13 @@ Object.assign(I18N.ja, {
   "hub.program.name": "当日の流れ",
   "hub.program.desc": "3時間のプログラムを、気になるところから探検",
   "hub.play.name": "あそぶ",
-  "hub.play.desc": "タイプ診断と、みんなのやってみたい",
+  "hub.play.desc": "ひとこと診断と、みんなのやってみたい",
   "hub.entry.name": "参加申込",
   "hub.entry.desc": "聴くだけでもOK。参加は無料です",
   "hub.faq.name": "よくある質問",
   "hub.faq.desc": "入退場・参加費・連絡先はこちら",
 
-  "sp.title": "あなたの「やってみたい」を、人前で話してみませんか?",
+  "sp.title": "あなたの「やってみたい」を、\n人前で話してみませんか?",
   "sp.step1d": "このページのフォームから応募します。",
   "sp.step2d": "応募が届いた人から順に、ざっくばらんにお話しします。",
   "sp.closedBody": "ご関心をお寄せいただき、ありがとうございます。観客としての参加は、参加申込から受け付けています。"
@@ -104,13 +104,13 @@ Object.assign(I18N.en, {
   "hub.program.name": "Program",
   "hub.program.desc": "Explore the 3-hour program, starting wherever you like",
   "hub.play.name": "Play",
-  "hub.play.desc": "A type quiz and everyone's \"I want to try\"",
+  "hub.play.desc": "One-line quiz and everyone's \"I want to try\"",
   "hub.entry.name": "Register",
   "hub.entry.desc": "Just listening is fine. It's free",
   "hub.faq.name": "FAQ",
   "hub.faq.desc": "Coming and going, fees and contact",
 
-  "sp.title": "Why not say your \"I want to try\" out loud, in front of people?",
+  "sp.title": "Why not say your \"I want to try\"\nout loud, in front of people?",
   "sp.step1d": "Use the form on this page.",
   "sp.step2d": "We'll chat casually, starting with whoever applied first.",
   "sp.closedBody": "Thank you for your interest. You can still join as an audience member by registering."
@@ -121,8 +121,8 @@ Object.assign(I18N.ja, {
   "nav.wall": "みんなのやってみたい",
   "hub.wall.name": "みんなのやってみたい",
   "hub.wall.desc": "参加者のひとことを一覧で。あなたの一言も載るかも",
-  "form.publish": "このひとことを、お名前(ニックネームOK)と一緒に、このサイトの「みんなのやってみたい」に載せてもいい",
-  "form.publishHelp": "任意です。運営が内容を確認してから掲載します。チェックしなくても、参加には影響しません。",
+  "form.publish": "このひとことを「みんなのやってみたい」に載せる",
+  "form.publishHelp": "ニックネームと一緒に、このサイトに並びます。チェックしなくても参加には影響しません。",
 
   "wall.kicker": "遊べるコンテンツ 03",
   "wall.title": "みんなのやってみたい",
@@ -135,7 +135,7 @@ Object.assign(I18N.ja, {
   "wall.empty": "まだ掲載はありません。最初の一言になってみませんか?",
   "wall.error": "読み込めませんでした。少し時間をおいて、もう一度開いてください。",
   "wall.howTitle": "あなたの一言も載せるには",
-  "wall.howBody": "参加申込で「やってみたいこと」を書き、掲載OKにチェックしてください。運営が確認してから、ここに並びます。",
+  "wall.howBody": "参加申込で「やってみたいこと」を書いて、掲載にチェックすると、ここに並びます。",
   "wall.cta": "参加申込へ",
 
   "pop.hint": "背景のバブルを、タップして割ってみよう",
@@ -154,8 +154,8 @@ Object.assign(I18N.en, {
   "nav.wall": "Everyone's \"I want to try\"",
   "hub.wall.name": "Everyone's \"I want to try\"",
   "hub.wall.desc": "One line from each participant. Yours might be here too",
-  "form.publish": "You may show my one line, with my name (a nickname is fine), on this site's \"Everyone's I want to try\" page",
-  "form.publishHelp": "Optional. The organizers review it before it is shown. Leaving it unchecked doesn't affect your registration.",
+  "form.publish": "Show this line on \"Everyone's I want to try\"",
+  "form.publishHelp": "It appears on this site with your nickname. Leaving it unchecked doesn't affect your registration.",
 
   "wall.kicker": "Play 03",
   "wall.title": "Everyone's \"I want to try\"",
@@ -168,7 +168,7 @@ Object.assign(I18N.en, {
   "wall.empty": "Nothing here yet. Want to be the first line?",
   "wall.error": "Couldn't load this. Please try again in a little while.",
   "wall.howTitle": "To get your line on this wall",
-  "wall.howBody": "Write what you want to try in the registration form and tick the box to allow display. It appears here after the organizers review it.",
+  "wall.howBody": "Write what you want to try in the registration form and tick the box. It will appear here.",
   "wall.cta": "Go to registration",
 
   "pop.hint": "Tap the bubbles in the background to pop them",
@@ -204,12 +204,12 @@ Object.assign(I18N.en, {
 Object.assign(I18N.ja, {
   "tab.home": "ホーム", "tab.program": "当日の流れ", "tab.speaker": "登壇", "tab.play": "あそぶ", "tab.entry": "参加申込",
   "next.label": "つぎは",
-  "play.nav.dx": "タイプ診断", "play.nav.ms": "ミッション"
+  "play.nav.dx": "ひとこと診断", "play.nav.ms": "ミッション"
 });
 Object.assign(I18N.en, {
   "tab.home": "Home", "tab.program": "Program", "tab.speaker": "Present", "tab.play": "Play", "tab.entry": "Register",
   "next.label": "Next",
-  "play.nav.dx": "Type quiz", "play.nav.ms": "Missions"
+  "play.nav.dx": "One-line quiz", "play.nav.ms": "Missions"
 });
 
 

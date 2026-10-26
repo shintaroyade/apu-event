@@ -30,8 +30,8 @@ const I18N = {
 
     /* ---- このイベントについて ---- */
     "about.title": "このイベントについて",
-    "about.body": "APU生が自分の「やりたいこと」を人前でプレゼンし、仲間・サークル・リソースとつながって、挑戦を現実に変えていく場です。発表するのは、完成した夢や実績ではありません。「やってみたい」の一言から始められます。",
-    "about.highlight": "完成した夢は不要。\n「やってみたい」の\n一言でOK。",
+    "about.body": "APU生が自分の「やりたいこと」を人前でプレゼンし、仲間・サークル・リソースとつながって、挑戦を現実に変えていく場です。完成した夢や実績はいりません。「やってみたい」の一言から始められます。",
+    "about.highlight": "あなたの\n「やってみたい」が、\n次の誰かを動かす。",
     "about.fact1": "全学年・誰でも参加OK",
     "about.fact2": "入退場自由",
     "about.fact3": "参加無料",
@@ -134,7 +134,7 @@ const I18N = {
 
     /* ---- 参加申込フォーム ---- */
     "form.title": "参加申込",
-    "form.lead": "1分で完了します。必須は5項目だけです。",
+    "form.lead": "1分で完了します。必須は6項目だけです。",
     "form.privacy": "入力された個人情報は、イベント運営の目的以外には使用しません。",
     "form.name": "お名前",
     "form.nameHelp": "ニックネームでもOKです",
@@ -252,7 +252,7 @@ const I18N = {
     "sp.fact2": "1人5分(+入替1分)",
     "sp.fact3": "英語での登壇もOK",
     "sp.deadlineLabel": "応募締切",
-    "sp.capNote": "定員は10人です。応募状況によっては、運営からご相談する場合があります。",
+    "sp.capNote": "応募状況によっては、運営からご相談する場合があります。",
     "sp.engNote": "英語で登壇する場合は、日本語の要約スライドを併用します。",
     "sp.flowTitle": "登壇までの流れ",
     "sp.step1": "応募",
@@ -347,8 +347,8 @@ const I18N = {
 
     /* ---- About ---- */
     "about.title": "About this event",
-    "about.body": "A place where APU students present what they want to do in front of others, connect with friends, clubs and resources, and turn their challenges into reality. You don't need a finished dream or achievements. You can start with just \"I want to try this.\"",
-    "about.highlight": "No finished dream needed.\n\"I want to try\"\nis enough.",
+    "about.body": "A place where APU students present what they want to do, connect with friends, clubs and resources, and turn their challenges into reality. No finished dream or achievements needed. Just start with \"I want to try this.\"",
+    "about.highlight": "Your \"I want to try\"\nmoves the next person.",
     "about.fact1": "Open to all years, anyone",
     "about.fact2": "Come and go freely",
     "about.fact3": "Free of charge",
@@ -451,7 +451,7 @@ const I18N = {
 
     /* ---- Registration form ---- */
     "form.title": "Registration",
-    "form.lead": "Takes about a minute. Only 5 items are required.",
+    "form.lead": "Takes about a minute. Only 6 items are required.",
     "form.privacy": "Your personal information will be used only for running this event.",
     "form.name": "Name",
     "form.nameHelp": "A nickname is fine",
@@ -569,7 +569,7 @@ const I18N = {
     "sp.fact2": "5 min each (+1 min changeover)",
     "sp.fact3": "English is welcome",
     "sp.deadlineLabel": "Apply by",
-    "sp.capNote": "There are 10 spots. Depending on applications, the organizers may contact you to talk it over.",
+    "sp.capNote": "Depending on applications, the organizers may contact you to talk it over.",
     "sp.engNote": "If you present in English, you'll use a Japanese summary slide alongside.",
     "sp.flowTitle": "From application to stage",
     "sp.step1": "Apply",

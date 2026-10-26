@@ -432,8 +432,19 @@
     const el = {
       name: $("#f-name"), affiliation: $("#f-aff"), grade: $("#f-grade"),
       companions: $("#f-comp"), email: $("#f-email"), wish: $("#f-wish"), consent: $("#f-consent"),
-      affOther: $("#f-aff-other"), gradeOther: $("#f-grade-other")
+      affOther: $("#f-aff-other"), gradeOther: $("#f-grade-other"), publish: $("#f-publish")
     };
+
+    // 「みんなのやってみたい」への掲載チェックは、ひとことを書いたときだけ出す
+    const publishField = $('[data-field="publish"]', form);
+    const syncPublish = () => {
+      if (!publishField) return;
+      const has = !!el.wish.value.trim();
+      publishField.hidden = !has;
+      if (!has && el.publish) el.publish.checked = false;
+    };
+    el.wish.addEventListener("input", syncPublish);
+    syncPublish();
 
     // 「その他」を選んだときだけ、自由入力欄を出す
     const otherPairs = [
@@ -686,13 +697,33 @@
     let tried = false;
 
     const val = id => $("#" + id).value.trim();
+    // 所属・学年で「その他」を選んだら自由入力欄を出す
+    const spSelectRule = k => {
+      const v = $("#sp-" + k).value;
+      if (!v) return "form.err.select";
+      if (v === "other" && !val("sp-" + k + "-other") && (tried || $("#sp-" + k + "-other").dataset.touched)) return "form.err.other";
+      return "";
+    };
+    const spLabel = (prefix, k) => {
+      const v = $("#sp-" + k).value, base = tIn("ja", prefix + v);
+      return v === "other" ? base + "(" + val("sp-" + k + "-other") + ")" : base;
+    };
+    ["aff", "grade"].forEach(k => {
+      const sel = $("#sp-" + k), inp = $("#sp-" + k + "-other"), wrap = $("#sp-" + k + "-other-wrap");
+      if (!inp) return;
+      const sync = focus => { const on = sel.value === "other"; wrap.hidden = !on; if (on && focus) inp.focus(); };
+      sel.addEventListener("change", () => sync(true));
+      inp.addEventListener("input", () => { if (tried || sel.hasAttribute("aria-invalid")) check(k); });
+      inp.addEventListener("blur", () => { inp.dataset.touched = "1"; check(k); });
+      sync(false);
+    });
     const radio = name => { const r = form.querySelector(`input[name="${name}"]:checked`); return r ? r.value : ""; };
 
     // 項目ごとのチェック(エラーの文言キーを返す。問題なければ "")
     const rules = {
       name:    () => val("sp-name") ? "" : "form.err.required",
-      aff:     () => $("#sp-aff").value ? "" : "form.err.select",
-      grade:   () => $("#sp-grade").value ? "" : "form.err.select",
+      aff:     () => spSelectRule("aff"),
+      grade:   () => spSelectRule("grade"),
       wish:    () => val("sp-wish") ? "" : "form.err.required",
       lang:    () => radio("lang") ? "" : "sp.err.lang",
       email:   () => {
@@ -767,8 +798,8 @@
       const stage = radio("stage");
       const data = {
         name: val("sp-name"),
-        affiliation: label("form.aff." + $("#sp-aff").value),
-        grade: label("form.grade." + $("#sp-grade").value),
+        affiliation: spLabel("form.aff.", "aff"),
+        grade: spLabel("form.grade.", "grade"),
         wish: val("sp-wish"),
         stage: stage ? label("sp.stage." + stage) : "",
         detail: val("sp-detail"),

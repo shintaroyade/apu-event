@@ -484,3 +484,20 @@ html[lang="en"] .tagline { letter-spacing: .04em; font-size: clamp(16px, 4.4vw, 
 
 /* 参加予定のセッション:「全部」 */
 .check--all { font-weight: 700; }
+
+/* お問い合わせ:メールやアカウント名を途中で折り返さない */
+.contact div { grid-template-columns: 5.5em minmax(0, 1fr); }
+.contact dd a { word-break: keep-all; overflow-wrap: normal; white-space: nowrap; font-size: 15px; }
+
+/* 申込:掲載チェックを目立たせる */
+.field--publish .check { border-color: var(--c-primary); background: var(--c-tint); font-weight: 700; }
+
+/* オープニングの最後に出すロゴ */
+.intro__logo { margin: 0; font-family: var(--font-tech); font-weight: 600; font-size: 26px; line-height: 1; letter-spacing: .02em; white-space: nowrap; color: var(--c-ink); }
+.intro__logo b { font-weight: 600; color: var(--c-primary); text-shadow: 0 0 14px var(--c-glow); }
+.intro__logo i { font-style: italic; font-weight: 500; font-size: .5em; color: var(--c-primary-soft); margin: 0 .2em 0 .3em; }
+@media (max-height: 600px) { .intro__logo { font-size: 20px; } }
+
+/* 見出しの改行位置をそろえる(行の途中で折り返さない) */
+html[lang="ja"] .about__highlight, html[lang="ja"] [data-i18n="sp.title"] { white-space: pre-line; word-break: keep-all; text-wrap: nowrap; }
+html[lang="ja"] [data-i18n="sp.title"] { font-size: clamp(20px, 6vw, 26px); }
