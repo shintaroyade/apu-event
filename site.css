@@ -481,3 +481,6 @@ html[lang="en"] .tagline { letter-spacing: .04em; font-size: clamp(16px, 4.4vw, 
   .logo__un { color: var(--c-ink); }
   .tagline__wave i { transform: scaleY(.6); }
 }
+
+/* 参加予定のセッション:「全部」 */
+.check--all { font-weight: 700; }

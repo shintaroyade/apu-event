@@ -520,6 +520,28 @@
     });
     ["affiliation", "grade", "consent"].forEach(f => targets[f].addEventListener("change", () => check(f)));
     $$('input[name="slots"]', form).forEach(i => i.addEventListener("change", () => check("slots")));
+
+    // 「全部」:押すと全セッションにチェック。個別のチェックと連動
+    const slotAll = $("#f-slots-all");
+    const sessionBoxes = $$('input[name="slots"]:not([value="undecided"])', form);
+    const undecidedBox = $('input[name="slots"][value="undecided"]', form);
+    const syncAll = () => { if (slotAll) slotAll.checked = sessionBoxes.every(i => i.checked); };
+    if (slotAll) {
+      slotAll.addEventListener("change", () => {
+        sessionBoxes.forEach(i => { i.checked = slotAll.checked; });
+        if (slotAll.checked && undecidedBox) undecidedBox.checked = false;
+        check("slots");
+      });
+      sessionBoxes.forEach(i => i.addEventListener("change", () => {
+        if (i.checked && undecidedBox) undecidedBox.checked = false;
+        syncAll();
+      }));
+      if (undecidedBox) undecidedBox.addEventListener("change", () => {
+        if (undecidedBox.checked) sessionBoxes.forEach(i => { i.checked = false; });
+        syncAll();
+      });
+      syncAll();
+    }
     form.addEventListener("change", () => { if (tried && !summary.hidden) checkAll(); });
 
     // 言語を切り替えたら、表示中のエラーも訳し直す
@@ -556,7 +578,7 @@
         name: el.name.value.trim(),
         affiliation: selectLabel("form.aff.", el.affiliation, el.affOther),
         grade: selectLabel("form.grade.", el.grade, el.gradeOther),
-        slots: checked("slots").map(v => label("form.slot." + v)).join(" / "),
+        slots: (slotAll && slotAll.checked) ? label("form.slot.all") : checked("slots").map(v => label("form.slot." + v)).join(" / "),
         companions: el.companions.value.trim() === "" ? "" : Number(el.companions.value),
         email: el.email.value.trim(),
         wish: el.wish.value.trim(),
