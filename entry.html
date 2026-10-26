@@ -10,7 +10,7 @@
   <meta property="og:title" content="参加申込|UNMUTE to ACTION">
   <meta property="og:description" content="APU生の「やってみたい」が集まるプレゼンイベントの参加申込ページです。">
   <meta property="og:url" content="https://shintaroyade.github.io/apu-event/entry.html">
-  <meta property="og:image" content="https://shintaroyade.github.io/apu-event/ogp.png?v=20261026b">
+  <meta property="og:image" content="https://shintaroyade.github.io/apu-event/ogp.png?v=20261026c">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -18,17 +18,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="base.css?v=20261026b">
-  <link rel="stylesheet" href="style.css?v=20261026b">
-  <link rel="stylesheet" href="site.css?v=20261026b">
-  <script src="config.js?v=20261026b" defer></script>
-  <script src="i18n.js?v=20261026b" defer></script>
-  <script src="i18n_extra.js?v=20261026b" defer></script>
-  <script src="budoux-ja.min.js?v=20261026b" defer></script>
-  <script src="common.js?v=20261026b" defer></script>
-  <script src="site.js?v=20261026b" defer></script>
-  <script src="index.js?v=20261026b" defer></script>
-  <script src="pop.js?v=20261026b" defer></script>
+  <link rel="stylesheet" href="base.css?v=20261026c">
+  <link rel="stylesheet" href="style.css?v=20261026c">
+  <link rel="stylesheet" href="site.css?v=20261026c">
+  <script src="config.js?v=20261026c" defer></script>
+  <script src="i18n.js?v=20261026c" defer></script>
+  <script src="i18n_extra.js?v=20261026c" defer></script>
+  <script src="budoux-ja.min.js?v=20261026c" defer></script>
+  <script src="common.js?v=20261026c" defer></script>
+  <script src="site.js?v=20261026c" defer></script>
+  <script src="index.js?v=20261026c" defer></script>
+  <script src="pop.js?v=20261026c" defer></script>
 </head>
 <body>
   <script>document.documentElement.classList.add("js");document.documentElement.dataset.titleKey="meta.entryTitle";document.addEventListener("DOMContentLoaded",function(){document.body.dataset.page="entry";document.body.classList.add("has-bar");},{once:true});</script>
@@ -162,22 +162,94 @@
             <p class="err" id="f-email-err"></p>
           </div>
 
-          <!-- やってみたいこと -->
-          <div class="field" data-field="wish">
-            <label class="field__label" for="f-wish">
-              <span data-i18n="form.wish"></span><span class="tag tag--opt" data-i18n="common.optional"></span>
-            </label>
-            <p class="help" id="f-wish-help" data-i18n="form.wishHelp"></p>
-            <input class="input" id="f-wish" name="wish" type="text" maxlength="100"
-                   data-i18n-placeholder="form.wishPlaceholder" aria-describedby="f-wish-help">
+          <!-- ===== 交流マッチング(KamoTalk)用 ===== -->
+          <div class="form-block">
+            <p class="form-block__title" data-i18n="form.matchTitle"></p>
+            <p class="help" data-i18n="form.matchLead"></p>
           </div>
 
-          <!-- 次回以降への関心 -->
+          <fieldset class="field" data-field="fields" aria-describedby="f-fields-help f-fields-err">
+            <legend class="field__label">
+              <span data-i18n="form.fieldsQ"></span><span class="tag tag--req" data-i18n="common.required"></span>
+            </legend>
+            <p class="help" id="f-fields-help" data-i18n="form.fieldsHelp"></p>
+            <div class="pill-group">
+              <label class="pill"><input type="checkbox" name="fields" value="biz"><span data-i18n="form.fields.biz"></span></label>
+              <label class="pill"><input type="checkbox" name="fields" value="local"><span data-i18n="form.fields.local"></span></label>
+              <label class="pill"><input type="checkbox" name="fields" value="intl"><span data-i18n="form.fields.intl"></span></label>
+              <label class="pill"><input type="checkbox" name="fields" value="edu"><span data-i18n="form.fields.edu"></span></label>
+              <label class="pill"><input type="checkbox" name="fields" value="art"><span data-i18n="form.fields.art"></span></label>
+              <label class="pill"><input type="checkbox" name="fields" value="tech"><span data-i18n="form.fields.tech"></span></label>
+              <label class="pill"><input type="checkbox" name="fields" value="food"><span data-i18n="form.fields.food"></span></label>
+              <label class="pill"><input type="checkbox" name="fields" value="sports"><span data-i18n="form.fields.sports"></span></label>
+              <label class="pill"><input type="checkbox" name="fields" value="social"><span data-i18n="form.fields.social"></span></label>
+              <label class="pill"><input type="checkbox" name="fields" value="explore"><span data-i18n="form.fields.explore"></span></label>
+            </div>
+            <p class="err" id="f-fields-err"></p>
+          </fieldset>
+
+          <fieldset class="field" data-field="seek" aria-describedby="f-seek-err">
+            <legend class="field__label">
+              <span data-i18n="form.seekQ"></span><span class="tag tag--req" data-i18n="common.required"></span>
+            </legend>
+            <div class="check-list">
+              <label class="check"><input type="radio" name="seek" value="team"><span data-i18n="form.seek.team"></span></label>
+              <label class="check"><input type="radio" name="seek" value="help"><span data-i18n="form.seek.help"></span></label>
+              <label class="check"><input type="radio" name="seek" value="find"><span data-i18n="form.seek.find"></span></label>
+              <label class="check"><input type="radio" name="seek" value="listen"><span data-i18n="form.seek.listen"></span></label>
+            </div>
+            <p class="err" id="f-seek-err"></p>
+          </fieldset>
+
+          <!-- 「やりたいこと」ひとこと(誰に・何を・なぜ) -->
+          <div class="form-block">
+            <p class="form-block__title" data-i18n="form.oneTitle"></p>
+            <p class="help" data-i18n="form.oneLead"></p>
+          </div>
+
+          <fieldset class="field" data-field="who">
+            <legend class="field__label">
+              <span data-i18n="dx.q1"></span><span class="tag tag--opt" data-i18n="common.optional"></span>
+            </legend>
+            <div class="pill-group">
+              <label class="pill"><input type="radio" name="who" value="peer"><span data-i18n="dx.who.peer"></span></label>
+              <label class="pill"><input type="radio" name="who" value="friends"><span data-i18n="dx.who.friends"></span></label>
+              <label class="pill"><input type="radio" name="who" value="local"><span data-i18n="dx.who.local"></span></label>
+              <label class="pill"><input type="radio" name="who" value="apu"><span data-i18n="dx.who.apu"></span></label>
+              <label class="pill"><input type="radio" name="who" value="world"><span data-i18n="dx.who.world"></span></label>
+              <label class="pill"><input type="radio" name="who" value="future"><span data-i18n="dx.who.future"></span></label>
+              <label class="pill"><input type="radio" name="who" value="other"><span data-i18n="dx.who.other"></span></label>
+            </div>
+            <div class="other-input" id="f-who-other-wrap" hidden>
+              <label class="visually-hidden" for="f-who-other" data-i18n="dx.who.other"></label>
+              <input class="input" id="f-who-other" type="text" maxlength="20" data-i18n-placeholder="dx.whoPlaceholder">
+            </div>
+          </fieldset>
+
+          <div class="field" data-field="wish">
+            <label class="field__label" for="f-wish">
+              <span data-i18n="dx.q2"></span><span class="tag tag--opt" data-i18n="common.optional"></span>
+            </label>
+            <input class="input" id="f-wish" name="wish" type="text" maxlength="40"
+                   data-i18n-placeholder="dx.whatPlaceholder" aria-describedby="f-wish-count">
+            <p class="counter" id="f-wish-count" aria-live="polite"></p>
+          </div>
+
           <div class="field field--publish" data-field="publish" hidden>
             <label class="check"><input type="checkbox" id="f-publish" name="publish" value="yes"><span data-i18n="form.publish"></span></label>
             <p class="help" data-i18n="form.publishHelp"></p>
           </div>
 
+          <div class="field" data-field="why">
+            <label class="field__label" for="f-why">
+              <span data-i18n="dx.q3"></span><span class="tag tag--opt" data-i18n="common.optional"></span>
+            </label>
+            <input class="input" id="f-why" name="why" type="text" maxlength="40"
+                   data-i18n-placeholder="dx.whyPlaceholder" aria-describedby="f-why-count">
+            <p class="counter" id="f-why-count" aria-live="polite"></p>
+          </div>
+
+          <!-- 次回以降への関心 -->
           <fieldset class="field" data-field="interests">
             <legend class="field__label">
               <span data-i18n="form.interest"></span><span class="tag tag--opt" data-i18n="common.optional"></span>
@@ -209,6 +281,13 @@
           <h3 class="done__title" data-i18n="form.doneTitle"></h3>
           <p data-i18n="form.doneBody"></p>
           <p class="help" id="entryDoneTest" data-i18n="form.doneTest" hidden></p>
+          <div class="done-card" id="entryCard" hidden>
+            <p class="done-card__title" data-i18n="dx.resultTitle"></p>
+            <img id="entryCardImg" class="dx-result__img" alt="" width="1080" height="1350">
+            <button type="button" class="btn btn-secondary btn-block" id="entryCardSave" data-i18n="dx.save"></button>
+            <p class="help" data-i18n="dx.saveHint"></p>
+            <a class="btn btn-primary btn-block" href="speaker.html" id="entryCardSpeaker" data-speaker-when="open" data-i18n="form.doneSpeak"></a>
+          </div>
           <a class="btn btn-secondary" href="index.html" data-i18n="form.doneBack"></a>
         </div>
       </div>

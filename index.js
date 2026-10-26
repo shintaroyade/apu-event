@@ -155,22 +155,7 @@
     });
 
     // 画像として保存(スマホは共有メニュー、それ以外はダウンロード)
-    $("#dxSave").addEventListener("click", () => {
-      canvas.toBlob(async blob => {
-        if (!blob) return;
-        const file = new File([blob], "my-one-line.png", { type: "image/png" });
-        const coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
-        if (coarse && navigator.canShare && navigator.canShare({ files: [file] })) {
-          try { await navigator.share({ files: [file] }); return; }
-          catch (err) { if (err && err.name === "AbortError") return; }
-        }
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url; a.download = "my-one-line.png";
-        document.body.appendChild(a); a.click(); a.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 2000);
-      }, "image/png");
-    });
+    $("#dxSave").addEventListener("click", () => saveCanvasImage(canvas, "my-one-line.png"));
 
     document.addEventListener("langchange", () => {
       updateCounter(whatEl, "#dxWhatCount");
@@ -178,153 +163,179 @@
       if (last && !result.hidden) drawCard();
     });
 
-    /* ---- カード画像の描画 ---- */
     async function drawCard() {
-      const FONT = '"Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif';
-      const TECH = '"Chakra Petch", "Zen Kaku Gothic New", sans-serif';
-      try {
-        await Promise.all([
-          document.fonts.load('900 60px "Zen Kaku Gothic New"', "あA"),
-          document.fonts.load('600 30px "Chakra Petch"', "A")
-        ]);
-      } catch (e) { /* フォント未読込でも描画は続行 */ }
-
-      const css = getComputedStyle(document.documentElement);
-      const C = name => css.getPropertyValue(name).trim();
-      const PINK = C("--c-primary") || "#ff2e97";
-      const W = canvas.width, H = canvas.height;
-      const ctx = canvas.getContext("2d");
-      ctx.textBaseline = "middle";
-
-      // 背景(黒)+グリッド
-      ctx.fillStyle = C("--c-bg") || "#08080c";
-      ctx.fillRect(0, 0, W, H);
-      ctx.strokeStyle = "rgba(255,255,255,.06)"; ctx.lineWidth = 2;
-      for (let x = 0; x <= W; x += 60) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-      for (let y = 0; y <= H; y += 60) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
-
-      // ピンクの光
-      const glow = ctx.createRadialGradient(W - 120, 160, 0, W - 120, 160, 520);
-      glow.addColorStop(0, "rgba(255,46,151,.55)"); glow.addColorStop(.45, "rgba(255,46,151,.12)"); glow.addColorStop(1, "rgba(255,46,151,0)");
-      ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
-      const glow2 = ctx.createRadialGradient(80, H - 120, 0, 80, H - 120, 420);
-      glow2.addColorStop(0, "rgba(255,46,151,.22)"); glow2.addColorStop(1, "rgba(255,46,151,0)");
-      ctx.fillStyle = glow2; ctx.fillRect(0, 0, W, H);
-
-      // 細いリング
-      ctx.strokeStyle = "rgba(255,46,151,.6)"; ctx.lineWidth = 2;
-      ctx.shadowColor = PINK; ctx.shadowBlur = 24;
-      ctx.beginPath(); ctx.arc(W - 120, 160, 210, 0, Math.PI * 2); ctx.stroke();
-      ctx.shadowBlur = 0;
-
-      // 上部ラベル
-      const pad = 90;
-      ctx.font = `600 30px ${TECH}`;
-      ctx.fillStyle = PINK;
-      ctx.beginPath(); ctx.arc(pad + 8, 132, 8, 0, Math.PI * 2); ctx.fill();
-      ctx.fillText(t("dx.cardLabel").split("").join(String.fromCharCode(8202)), pad + 32, 132);
-
-      // 本文のパネル(四隅ブラケット)
-      const cardX = pad, cardY = 210, cardW = W - pad * 2, cardH = 820;
-      ctx.fillStyle = "rgba(19,19,28,.82)";
-      roundRect(ctx, cardX, cardY, cardW, cardH, 16); ctx.fill();
-      ctx.strokeStyle = "rgba(255,255,255,.14)"; ctx.lineWidth = 2;
-      roundRect(ctx, cardX, cardY, cardW, cardH, 16); ctx.stroke();
-      ctx.strokeStyle = PINK; ctx.lineWidth = 6; ctx.shadowColor = PINK; ctx.shadowBlur = 18;
-      const k = 56;
-      [[cardX, cardY, 1, 1], [cardX + cardW, cardY, -1, 1], [cardX, cardY + cardH, 1, -1], [cardX + cardW, cardY + cardH, -1, -1]]
-        .forEach(([x, y, dx, dy]) => { ctx.beginPath(); ctx.moveTo(x + dx * k, y); ctx.lineTo(x, y); ctx.lineTo(x, y + dy * k); ctx.stroke(); });
-      ctx.shadowBlur = 0;
-
-      // 本文(回答部分はピンクで光らせる)
       const whoText = last.who.custom !== undefined ? last.who.custom : t(last.who.key);
-      const values = { who: whoText, what: last.what, why: last.why };
-      const segments = [];
-      t("dx.template").split(/(\{who\}|\{what\}|\{why\})/).forEach(part => {
-        const m = part.match(/^\{(who|what|why)\}$/);
-        if (m) segments.push({ text: values[m[1]], hl: true });
-        else if (part) segments.push({ text: part, hl: false });
-      });
-
-      const boxX = cardX + 70, boxW = cardW - 140, boxY = cardY + 90, boxH = cardH - 180;
-      let size = 84, lines, lineH;
-      do {
-        ctx.font = `900 ${size}px ${FONT}`;
-        lines = layout(ctx, segments, boxW);
-        lineH = size * 1.55;
-        size -= 4;
-      } while (lines.length * lineH > boxH && size > 36);
-      size += 4;
-      ctx.font = `900 ${size}px ${FONT}`;
-
-      let y = boxY + (boxH - lines.length * lineH) / 2 + lineH / 2;
-      lines.forEach(line => {
-        let x = boxX;
-        line.forEach(u => {
-          const w = ctx.measureText(u.text).width;
-          if (u.hl) { ctx.fillStyle = PINK; ctx.shadowColor = PINK; ctx.shadowBlur = 22; }
-          else { ctx.fillStyle = C("--c-ink") || "#f3f2f8"; ctx.shadowBlur = 0; }
-          ctx.fillText(u.text, x, y);
-          if (u.hl && u.text.trim()) {   // 細い下線
-            ctx.shadowBlur = 0;
-            ctx.fillRect(x, y + size * .62, w + 1, 4);
-          }
-          x += w;
-        });
-        y += lineH;
-      });
-      ctx.shadowBlur = 0;
-
-      // フッター(イベント名・コンセプト)
-      ctx.fillStyle = "rgba(255,255,255,.18)";
-      ctx.fillRect(pad, H - 236, W - pad * 2, 2);
-      ctx.fillStyle = C("--c-ink") || "#f3f2f8";
-      fitText(ctx, loc(CONFIG.event.name), pad, H - 180, W - pad * 2, 40, FONT);
-      ctx.fillStyle = PINK;
-      fitText(ctx, t("hero.concept").replace(/\n/g, " "), pad, H - 116, W - pad * 2, 32, FONT);
-
+      img.alt = await drawOneLineCard(canvas, { who: whoText, what: last.what, why: last.why });
       img.src = canvas.toDataURL("image/png");
-      img.alt = t("dx.imgAlt") + ":" + segments.map(s => s.text).join("");
     }
+  }
 
-    // 文字を幅に合わせて改行(日本語は1文字ずつ、英語は単語単位)
-    function layout(ctx, segments, maxW) {
-      const NO_START = "、。,.!?!?」』)】ー〜…ゃゅょっぁぃぅぇぉャュョッ";
-      const units = [];
-      segments.forEach(seg => {
-        (seg.text.match(/[A-Za-z0-9'’\-.,!?:;"()&\/]+\s*|\s+|./gsu) || []).forEach(s => units.push({ text: s, hl: seg.hl }));
-      });
-      const lines = [[]];
-      let w = 0;
-      units.forEach(u => {
-        const uw = ctx.measureText(u.text.replace(/\s+$/, "")).width;
-        const line = lines[lines.length - 1];
-        if (w + uw > maxW && line.length && !NO_START.includes(u.text)) {
-          lines.push([]);
-          w = 0;
-          if (/^\s+$/.test(u.text)) return;   // 行頭の空白は捨てる
+  /** canvas を画像として保存(スマホは共有メニュー、それ以外はダウンロード) */
+  function saveCanvasImage(canvas, filename) {
+    canvas.toBlob(async blob => {
+      if (!blob) return;
+      const file = new File([blob], filename, { type: "image/png" });
+      const coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+      if (coarse && navigator.canShare && navigator.canShare({ files: [file] })) {
+        try { await navigator.share({ files: [file] }); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+    }, "image/png");
+  }
+
+  /* =======================================================================
+   * 「やりたいこと」カードの描画(申込の完了画面でも使う)
+   *  data: { who, what, why }(who・why は空でも可)。戻り値は代替テキスト。
+   * ===================================================================== */
+  async function drawOneLineCard(canvas, data) {
+    const FONT = '"Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif';
+    const TECH = '"Chakra Petch", "Zen Kaku Gothic New", sans-serif';
+    try {
+      await Promise.all([
+        document.fonts.load('900 60px "Zen Kaku Gothic New"', "あA"),
+        document.fonts.load('600 30px "Chakra Petch"', "A")
+      ]);
+    } catch (e) { /* フォント未読込でも描画は続行 */ }
+
+    const css = getComputedStyle(document.documentElement);
+    const C = name => css.getPropertyValue(name).trim();
+    const PINK = C("--c-primary") || "#ff2e97";
+    const W = canvas.width, H = canvas.height;
+    const ctx = canvas.getContext("2d");
+    ctx.textBaseline = "middle";
+
+    // 背景(黒)+グリッド
+    ctx.fillStyle = C("--c-bg") || "#08080c";
+    ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = "rgba(255,255,255,.06)"; ctx.lineWidth = 2;
+    for (let x = 0; x <= W; x += 60) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (let y = 0; y <= H; y += 60) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+    // ピンクの光
+    const glow = ctx.createRadialGradient(W - 120, 160, 0, W - 120, 160, 520);
+    glow.addColorStop(0, "rgba(255,46,151,.55)"); glow.addColorStop(.45, "rgba(255,46,151,.12)"); glow.addColorStop(1, "rgba(255,46,151,0)");
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+    const glow2 = ctx.createRadialGradient(80, H - 120, 0, 80, H - 120, 420);
+    glow2.addColorStop(0, "rgba(255,46,151,.22)"); glow2.addColorStop(1, "rgba(255,46,151,0)");
+    ctx.fillStyle = glow2; ctx.fillRect(0, 0, W, H);
+
+    // 細いリング
+    ctx.strokeStyle = "rgba(255,46,151,.6)"; ctx.lineWidth = 2;
+    ctx.shadowColor = PINK; ctx.shadowBlur = 24;
+    ctx.beginPath(); ctx.arc(W - 120, 160, 210, 0, Math.PI * 2); ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // 上部ラベル
+    const pad = 90;
+    ctx.font = `600 30px ${TECH}`;
+    ctx.fillStyle = PINK;
+    ctx.beginPath(); ctx.arc(pad + 8, 132, 8, 0, Math.PI * 2); ctx.fill();
+    ctx.fillText(t("dx.cardLabel").split("").join(String.fromCharCode(8202)), pad + 32, 132);
+
+    // 本文のパネル(四隅ブラケット)
+    const cardX = pad, cardY = 210, cardW = W - pad * 2, cardH = 820;
+    ctx.fillStyle = "rgba(19,19,28,.82)";
+    roundRect(ctx, cardX, cardY, cardW, cardH, 16); ctx.fill();
+    ctx.strokeStyle = "rgba(255,255,255,.14)"; ctx.lineWidth = 2;
+    roundRect(ctx, cardX, cardY, cardW, cardH, 16); ctx.stroke();
+    ctx.strokeStyle = PINK; ctx.lineWidth = 6; ctx.shadowColor = PINK; ctx.shadowBlur = 18;
+    const k = 56;
+    [[cardX, cardY, 1, 1], [cardX + cardW, cardY, -1, 1], [cardX, cardY + cardH, 1, -1], [cardX + cardW, cardY + cardH, -1, -1]]
+      .forEach(([x, y, dx, dy]) => { ctx.beginPath(); ctx.moveTo(x + dx * k, y); ctx.lineTo(x, y); ctx.lineTo(x, y + dy * k); ctx.stroke(); });
+    ctx.shadowBlur = 0;
+
+    // 本文(回答部分はピンクで光らせる)
+    const values = { who: data.who || "", what: data.what || "", why: data.why || "" };
+    const tpl = !values.who ? "dx.templateWhat" : !values.why ? "dx.templateNoWhy" : "dx.template";
+    const segments = [];
+    t(tpl).split(/(\{who\}|\{what\}|\{why\})/).forEach(part => {
+      const m = part.match(/^\{(who|what|why)\}$/);
+      if (m) segments.push({ text: values[m[1]], hl: true });
+      else if (part) segments.push({ text: part, hl: false });
+    });
+
+    const boxX = cardX + 70, boxW = cardW - 140, boxY = cardY + 90, boxH = cardH - 180;
+    let size = 84, lines, lineH;
+    do {
+      ctx.font = `900 ${size}px ${FONT}`;
+      lines = layout(ctx, segments, boxW);
+      lineH = size * 1.55;
+      size -= 4;
+    } while (lines.length * lineH > boxH && size > 36);
+    size += 4;
+    ctx.font = `900 ${size}px ${FONT}`;
+
+    let y = boxY + (boxH - lines.length * lineH) / 2 + lineH / 2;
+    lines.forEach(line => {
+      let x = boxX;
+      line.forEach(u => {
+        const w = ctx.measureText(u.text).width;
+        if (u.hl) { ctx.fillStyle = PINK; ctx.shadowColor = PINK; ctx.shadowBlur = 22; }
+        else { ctx.fillStyle = C("--c-ink") || "#f3f2f8"; ctx.shadowBlur = 0; }
+        ctx.fillText(u.text, x, y);
+        if (u.hl && u.text.trim()) {   // 細い下線
+          ctx.shadowBlur = 0;
+          ctx.fillRect(x, y + size * .62, w + 1, 4);
         }
-        lines[lines.length - 1].push(u);
-        w += ctx.measureText(u.text).width;
+        x += w;
       });
-      return lines;
-    }
+      y += lineH;
+    });
+    ctx.shadowBlur = 0;
 
-    function fitText(ctx, text, x, y, maxW, size, font) {
-      let s = size;
-      do { ctx.font = `700 ${s}px ${font}`; s -= 2; } while (ctx.measureText(text).width > maxW && s > 18);
-      ctx.fillText(text, x, y);
-    }
+    // フッター(イベント名・コンセプト)
+    ctx.fillStyle = "rgba(255,255,255,.18)";
+    ctx.fillRect(pad, H - 236, W - pad * 2, 2);
+    ctx.fillStyle = C("--c-ink") || "#f3f2f8";
+    fitText(ctx, loc(CONFIG.event.name), pad, H - 180, W - pad * 2, 40, FONT);
+    ctx.fillStyle = PINK;
+    fitText(ctx, t("hero.concept").replace(/\n/g, " "), pad, H - 116, W - pad * 2, 32, FONT);
 
-    function roundRect(ctx, x, y, w, h, r) {
-      ctx.beginPath();
-      ctx.moveTo(x + r, y);
-      ctx.arcTo(x + w, y, x + w, y + h, r);
-      ctx.arcTo(x + w, y + h, x, y + h, r);
-      ctx.arcTo(x, y + h, x, y, r);
-      ctx.arcTo(x, y, x + w, y, r);
-      ctx.closePath();
-    }
+    return t("dx.imgAlt") + ":" + segments.map(s => s.text).join("");
+  }
+
+  // 文字を幅に合わせて改行(日本語は1文字ずつ、英語は単語単位)
+  function layout(ctx, segments, maxW) {
+    const NO_START = "、。,.!?!?」』)】ー〜…ゃゅょっぁぃぅぇぉャュョッ";
+    const units = [];
+    segments.forEach(seg => {
+      (seg.text.match(/[A-Za-z0-9'’\-.,!?:;"()&\/]+\s*|\s+|./gsu) || []).forEach(s => units.push({ text: s, hl: seg.hl }));
+    });
+    const lines = [[]];
+    let w = 0;
+    units.forEach(u => {
+      const uw = ctx.measureText(u.text.replace(/\s+$/, "")).width;
+      const line = lines[lines.length - 1];
+      if (w + uw > maxW && line.length && !NO_START.includes(u.text)) {
+        lines.push([]);
+        w = 0;
+        if (/^\s+$/.test(u.text)) return;   // 行頭の空白は捨てる
+      }
+      lines[lines.length - 1].push(u);
+      w += ctx.measureText(u.text).width;
+    });
+    return lines;
+  }
+
+  function fitText(ctx, text, x, y, maxW, size, font) {
+    let s = size;
+    do { ctx.font = `700 ${s}px ${font}`; s -= 2; } while (ctx.measureText(text).width > maxW && s > 18);
+    ctx.fillText(text, x, y);
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
   }
 
   /* =======================================================================
@@ -432,7 +443,27 @@
     const el = {
       name: $("#f-name"), affiliation: $("#f-aff"), grade: $("#f-grade"),
       companions: $("#f-comp"), email: $("#f-email"), wish: $("#f-wish"), consent: $("#f-consent"),
-      affOther: $("#f-aff-other"), gradeOther: $("#f-grade-other"), publish: $("#f-publish")
+      affOther: $("#f-aff-other"), gradeOther: $("#f-grade-other"), publish: $("#f-publish"),
+      why: $("#f-why"), whoOther: $("#f-who-other")
+    };
+
+    // 「誰に?」で「自由に入力」を選んだら入力欄を出す
+    const whoWrap = $("#f-who-other-wrap");
+    $$('input[name="who"]', form).forEach(r => r.addEventListener("change", () => {
+      const on = r.checked && r.value === "other";
+      if (r.checked) { whoWrap.hidden = !on; if (on) el.whoOther.focus(); }
+    }));
+    // 文字数カウンター
+    [[el.wish, "#f-wish-count"], [el.why, "#f-why-count"]].forEach(([inp, out]) => {
+      const max = Number(inp.getAttribute("maxlength")) || 40;
+      const upd = () => { $(out).textContent = t("dx.counter", { n: charLen(inp.value), max }); };
+      inp.addEventListener("input", upd); document.addEventListener("langchange", upd); upd();
+    });
+    const whoAnswer = () => {
+      const r = $('input[name="who"]:checked', form);
+      if (!r) return { ja: "", shown: "" };
+      if (r.value === "other") { const v = el.whoOther.value.trim(); return { ja: v, shown: v }; }
+      return { ja: tIn("ja", "dx.who." + r.value), shown: t("dx.who." + r.value) };
     };
 
     // 「みんなのやってみたい」への掲載チェックは、ひとことを書いたときだけ出す
@@ -480,6 +511,8 @@
       affiliation: () => selectRule(el.affiliation, el.affOther),
       grade:       () => selectRule(el.grade, el.gradeOther),
       slots:       () => checked("slots").length ? "" : "form.err.slots",
+      fields:      () => checked("fields").length ? "" : "form.err.fields",
+      seek:        () => checked("seek").length ? "" : "form.err.seek",
       companions:  () => {
         const v = el.companions.value.trim();
         if (el.companions.validity && el.companions.validity.badInput) return "form.err.number";
@@ -495,11 +528,13 @@
     };
     const errIds = {
       name: "f-name-err", affiliation: "f-aff-err", grade: "f-grade-err", slots: "f-slots-err",
+      fields: "f-fields-err", seek: "f-seek-err",
       companions: "f-comp-err", email: "f-email-err", consent: "f-consent-err"
     };
     const targets = {
       name: el.name, affiliation: el.affiliation, grade: el.grade,
-      slots: $('[data-field="slots"]', form), companions: el.companions, email: el.email, consent: el.consent
+      slots: $('[data-field="slots"]', form), fields: $('[data-field="fields"]', form), seek: $('[data-field="seek"]', form),
+      companions: el.companions, email: el.email, consent: el.consent
     };
 
     function check(field) {
@@ -513,7 +548,8 @@
     }
 
     function checkAll() {
-      const bad = Object.keys(rules).filter(f => !check(f));
+      const ORDER = ["name", "affiliation", "grade", "slots", "companions", "email", "fields", "seek", "consent"];
+      const bad = ORDER.filter(f => rules[f] && !check(f));
       if (bad.length) {
         summary.hidden = false;
         summary.dataset.n = bad.length;
@@ -531,6 +567,8 @@
     });
     ["affiliation", "grade", "consent"].forEach(f => targets[f].addEventListener("change", () => check(f)));
     $$('input[name="slots"]', form).forEach(i => i.addEventListener("change", () => check("slots")));
+    $$('input[name="fields"]', form).forEach(i => i.addEventListener("change", () => check("fields")));
+    $$('input[name="seek"]', form).forEach(i => i.addEventListener("change", () => check("seek")));
 
     // 「全部」:押すと全セッションにチェック。個別のチェックと連動
     const slotAll = $("#f-slots-all");
@@ -592,7 +630,11 @@
         slots: (slotAll && slotAll.checked) ? label("form.slot.all") : checked("slots").map(v => label("form.slot." + v)).join(" / "),
         companions: el.companions.value.trim() === "" ? "" : Number(el.companions.value),
         email: el.email.value.trim(),
+        fields: checked("fields").map(v => label("form.fields." + v)).join(" / "),
+        seek: checked("seek").map(v => label("form.seek." + v)).join(""),
+        who: whoAnswer().ja,
         wish: el.wish.value.trim(),
+        why: el.why.value.trim(),
         publish: (el.publish && el.publish.checked && el.wish.value.trim()) ? "掲載OK" : "",
         interests: checked("interests").map(v => label("form.int." + v)).join(" / "),
         consent: "同意"
@@ -608,8 +650,22 @@
         form.hidden = true;
         const done = $("#entryDone");
         $("#entryDoneTest").hidden = !res.test;
+        // 「何を?」が書かれていれば、その人だけのカードを出す
+        const cardBox = $("#entryCard");
+        if (cardBox && data.wish) {
+          const cv = document.createElement("canvas"); cv.width = 1080; cv.height = 1350;
+          const draw = async () => {
+            const im = $("#entryCardImg");
+            im.alt = await drawOneLineCard(cv, { who: whoAnswer().shown, what: data.wish, why: data.why });
+            im.src = cv.toDataURL("image/png");
+          };
+          await draw();
+          document.addEventListener("langchange", draw);
+          $("#entryCardSave").addEventListener("click", () => saveCanvasImage(cv, "my-one-line.png"));
+          cardBox.hidden = false;
+        }
         done.hidden = false;
-        done.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "center" });
+        done.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
         done.focus({ preventScroll: true });
       } catch (err) {
         console.error(err);

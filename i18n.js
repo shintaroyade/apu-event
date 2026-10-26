@@ -134,8 +134,8 @@ const I18N = {
 
     /* ---- 参加申込フォーム ---- */
     "form.title": "参加申込",
-    "form.lead": "1分で完了します。必須は6項目だけです。",
-    "form.privacy": "入力された個人情報は、イベント運営の目的以外には使用しません。",
+    "form.lead": "2分ほどで完了します。",
+    "form.privacy": "入力された内容は、イベント運営と当日の交流マッチング以外には使用しません。",
     "form.name": "お名前",
     "form.nameHelp": "ニックネームでもOKです",
     "form.namePlaceholder": "例:あぷたろう",
@@ -176,8 +176,8 @@ const I18N = {
     "form.int.speak": "登壇に興味がある",
     "form.int.staff": "運営に興味がある",
     "form.int.group": "団体として出てみたい",
-    "form.consent": "個人情報の取り扱いに同意する",
-    "form.consentNote": "申込内容はイベント運営の目的にのみ使用します。",
+    "form.consent": "個人情報の取り扱いと、KamoTalkへの共有に同意する",
+    "form.consentNote": "申込内容はイベント運営と当日の交流マッチングのために使います。マッチングのため、お名前・所属・学年と「当日の交流のための質問」「やりたいこと」の回答を、KamoTalkの提供者に共有します。メールアドレスは共有しません。",
     "form.submit": "この内容で申し込む",
     "form.sending": "送信中…",
     "form.err.required": "入力してください",
@@ -451,8 +451,8 @@ const I18N = {
 
     /* ---- Registration form ---- */
     "form.title": "Registration",
-    "form.lead": "Takes about a minute. Only 6 items are required.",
-    "form.privacy": "Your personal information will be used only for running this event.",
+    "form.lead": "Takes about 2 minutes.",
+    "form.privacy": "Your information is used only for running the event and for networking matches on the day.",
     "form.name": "Name",
     "form.nameHelp": "A nickname is fine",
     "form.namePlaceholder": "e.g. Apu",
@@ -493,8 +493,8 @@ const I18N = {
     "form.int.speak": "Interested in presenting",
     "form.int.staff": "Interested in helping organize",
     "form.int.group": "Want to join as a group",
-    "form.consent": "I agree to the handling of my personal information",
-    "form.consentNote": "Your registration will be used only for running this event.",
+    "form.consent": "I agree to the handling of my information, including sharing with KamoTalk",
+    "form.consentNote": "Your registration is used for running the event and for networking matches on the day. For matching, your name, affiliation, year, and your answers to the networking and \"what you want to do\" questions are shared with the provider of KamoTalk. Your email address is not shared.",
     "form.submit": "Submit registration",
     "form.sending": "Sending…",
     "form.err.required": "Please fill this in",
