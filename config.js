@@ -90,6 +90,7 @@ const CONFIG = {
    * kind は色分け用: talk(プレゼン) / group(団体) / mingle(交流) / other
    */
   timetable: [
+    { id: "reception", min: "20", kind: "other" },
     { id: "opening", min: "10", kind: "other" },
     { id: "talk1",   min: "30", kind: "talk" },
     { id: "change",  min: "5",  kind: "other" },
@@ -143,6 +144,14 @@ const CONFIG = {
       { name: "はると", wish: "学内でフリーマーケットを開いてみたい" }
     ]
   },
+
+  /* ---------- 当日出演する団体(faq.html の「出演団体」に表示) ----------
+   * kind: "community"(コミュニティ・プロジェクト紹介) / "talk"(挑戦者トーク) / "stage"(オープニングのステージ)
+   * 出演が決まったら1行ずつ足してください。表示順はこの配列の順番です。
+   */
+  groups: [
+    { name: "VIS・MOVA", kind: "community" }
+  ],
 
   /* ---------- 表示言語の初期値("ja" または "en") ---------- */
   defaultLang: "ja"

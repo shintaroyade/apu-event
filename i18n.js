@@ -201,7 +201,7 @@ const I18N = {
     /* ---- よくある質問 ---- */
     "faq.title": "よくある質問",
     "faq.q1": "入退場は自由ですか?",
-    "faq.a1": "はい、入退場自由です。人数を把握するため、事前の参加申込にご協力をお願いしています。",
+    "faq.a1": "はい、入退場自由です。人数の把握と当日の交流マッチングのため、事前の参加申込にご協力をお願いしています。",
     "faq.q2": "途中から参加してもいいですか?",
     "faq.a2": "はい、途中参加OKです。「タイムテーブル探検」で、気になるパートをチェックしてみてください。",
     "faq.q3": "登壇しない人も参加できますか?",
@@ -518,7 +518,7 @@ const I18N = {
     /* ---- FAQ ---- */
     "faq.title": "FAQ",
     "faq.q1": "Can I come and go freely?",
-    "faq.a1": "Yes, you can come and go as you like. To help us estimate numbers, we ask you to register in advance.",
+    "faq.a1": "Yes, come and go as you like. To help us plan numbers and set up networking matches on the day, please register in advance.",
     "faq.q2": "Can I join partway through?",
     "faq.a2": "Yes, you can join anytime. Check the parts you're interested in with the Timetable Explorer.",
     "faq.q3": "Can I join without presenting?",

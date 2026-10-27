@@ -511,3 +511,12 @@ html[lang="ja"] [data-i18n="sp.title"] { font-size: clamp(20px, 6vw, 26px); }
 .done-card__title { margin: 0; font-weight: 900; font-size: 18px; }
 .done-card .dx-result__img { margin-bottom: 4px; }
 .done-card .help { margin: 0; }
+
+/* 出演する団体 */
+.groups { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 10px; }
+.group-card { display: grid; gap: 2px; padding: 14px 16px; border: 1px solid var(--c-primary); border-radius: var(--radius); background: linear-gradient(180deg, var(--c-tint), transparent 80%), var(--c-surface); }
+.group-card__kind { font-family: var(--font-tech); font-size: 13px; font-weight: 600; letter-spacing: .08em; color: var(--c-primary); }
+.group-card__name { font-size: 19px; font-weight: 900; }
+.grp-join { margin-top: 18px; }
+.grp-join p { margin: 0 0 14px; }
+.grp-join .sub-title { margin-top: 0; }

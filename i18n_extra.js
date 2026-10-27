@@ -3,6 +3,18 @@
  * i18n.js と同じ形式です。同じキーがあれば、こちらが優先されます。
  * ========================================================================= */
 Object.assign(I18N.ja, {
+  "grp.kicker": "GROUPS",
+  "grp.title": "当日出演する団体",
+  "grp.more": "決まり次第、ここに追加していきます。",
+  "grp.kind.community": "コミュニティ紹介",
+  "grp.kind.talk": "挑戦者トーク",
+  "grp.kind.stage": "オープニング",
+  "grp.joinTitle": "出演したい団体・サークルの方へ",
+  "grp.joinBody": "2分の団体紹介や、挑戦者トークで話してくれる人を募集しています。InstagramのDMかメールでご連絡ください。",
+  "grp.joinCta": "連絡先を見る",
+  "tt.reception.name": "受付・開場",
+  "tt.reception.what": "受付で名札とKamoTalk用のQRコードを受け取ります。",
+  "tt.reception.you": "事前申込がまだの人も、受付で入力すればOK。",
   "form.matchTitle": "当日の交流のための質問",
   "form.matchLead": "話が合いそうな人とつながれるように、当日の交流(KamoTalk)に使います。",
   "form.fieldsQ": "興味のある分野",
@@ -77,7 +89,7 @@ Object.assign(I18N.ja, {
   "hub.entry.name": "参加申込",
   "hub.entry.desc": "聴くだけでもOK。申込むと、あなたのひとことカードがもらえます",
   "hub.faq.name": "よくある質問",
-  "hub.faq.desc": "入退場・参加費・連絡先はこちら",
+  "hub.faq.desc": "出演団体・よくある質問・連絡先",
 
   "sp.title": "あなたの「やってみたい」を、\n人前で話してみませんか?",
   "sp.step1d": "このページのフォームから応募します。",
@@ -86,6 +98,18 @@ Object.assign(I18N.ja, {
 });
 
 Object.assign(I18N.en, {
+  "grp.kicker": "GROUPS",
+  "grp.title": "Groups on stage",
+  "grp.more": "More will be added here as they're confirmed.",
+  "grp.kind.community": "Community Showcase",
+  "grp.kind.talk": "Challenger Talk",
+  "grp.kind.stage": "Opening",
+  "grp.joinTitle": "Want your club or group on stage?",
+  "grp.joinBody": "We're looking for 2-minute group intros and people to give Challenger Talks. Send us an Instagram DM or an email.",
+  "grp.joinCta": "See contact info",
+  "tt.reception.name": "Reception & doors open",
+  "tt.reception.what": "Pick up your name tag and KamoTalk QR code at reception.",
+  "tt.reception.you": "Haven't registered yet? You can sign up at reception.",
   "form.matchTitle": "For networking on the day",
   "form.matchLead": "We use these to connect you with people you'll click with at the event (via KamoTalk).",
   "form.fieldsQ": "Areas you're interested in",
@@ -160,7 +184,7 @@ Object.assign(I18N.en, {
   "hub.entry.name": "Register",
   "hub.entry.desc": "Just listening is fine. Register and get your own one-line card",
   "hub.faq.name": "FAQ",
-  "hub.faq.desc": "Coming and going, fees and contact",
+  "hub.faq.desc": "Groups on stage, FAQ and contact",
 
   "sp.title": "Why not say your \"I want to try\"\nout loud, in front of people?",
   "sp.step1d": "Use the form on this page.",

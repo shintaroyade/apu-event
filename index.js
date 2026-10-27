@@ -682,6 +682,30 @@
   /* =======================================================================
    * 問い合わせ先(config から差し込み)
    * ===================================================================== */
+  /** 出演する団体(CONFIG.groups) */
+  function initGroups() {
+    const list = $("#groupList");
+    if (!list) return;
+    const render = () => {
+      list.textContent = "";
+      (CONFIG.groups || []).forEach(g => {
+        const li = document.createElement("li");
+        li.className = "group-card";
+        const kind = document.createElement("span");
+        kind.className = "group-card__kind";
+        kind.textContent = t("grp.kind." + (g.kind || "community"));
+        const name = document.createElement("span");
+        name.className = "group-card__name";
+        name.textContent = loc(g.name);
+        li.append(kind, name);
+        list.appendChild(li);
+      });
+      list.hidden = !list.children.length;
+    };
+    render();
+    document.addEventListener("langchange", render);
+  }
+
   function initContact() {
     const insta = $("#contactInsta"), mail = $("#contactEmail");
     const o = CONFIG.organizer;
@@ -1029,6 +1053,7 @@
     initSpeaker();
     initEntryForm();
     initContact();
+    initGroups();
     initReveal();
   });
 })();
