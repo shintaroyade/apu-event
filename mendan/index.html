@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>面談日程調整</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* layout idea: one narrow column; a day-by-hour tap grid is the whole interface */
+:root{
+  --bg:#f4f6f8; --surface:#ffffff; --ink:#17212b; --muted:#5b6876; --line:#d6dde4;
+  --accent:#1d5f8a; --accent-ink:#ffffff; --accent-soft:#dcebf5;
+  --ok:#237a4b; --ok-soft:#d5efdf; --warn:#9a5b00;
+  --font-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c; --surface:#18212a; --ink:#e8edf2; --muted:#9aa8b6; --line:#2c3a47;
+    --accent:#5aa6d6; --accent-ink:#08141d; --accent-soft:#1d3a4f;
+    --ok:#5fcf91; --ok-soft:#173a29; --warn:#e0a23c; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c; --surface:#18212a; --ink:#e8edf2; --muted:#9aa8b6; --line:#2c3a47;
+  --accent:#5aa6d6; --accent-ink:#08141d; --accent-soft:#1d3a4f;
+  --ok:#5fcf91; --ok-soft:#173a29; --warn:#e0a23c; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.7;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px;display:flex;flex-direction:column;gap:20px}
+header h1{margin:0;font-size:1.5rem;line-height:1.3;text-wrap:balance}
+header p{margin:6px 0 0;color:var(--muted);font-size:.95rem}
+.tabs{display:flex;gap:8px}
+.tab{flex:1;padding:10px 12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-weight:500;border-radius:8px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.card h2{margin:0;font-size:1.05rem}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label,.field .lab{font-weight:700;font-size:.9rem}
+input[type=text],textarea,select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;width:100%}
+textarea{min-height:72px;resize:vertical}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{padding:8px 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer;background:var(--bg);font-size:.92rem}
+.seg input:checked + label{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.seg input:focus-visible + label,.tab:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.note{color:var(--muted);font-size:.88rem;margin:0}
+.gridbox{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table.grid{border-collapse:collapse;width:100%;min-width:560px}
+.grid th,.grid td{border:1px solid var(--line);text-align:center;padding:0}
+.grid thead th{font-size:.78rem;font-weight:500;color:var(--muted);padding:6px 0;background:var(--bg)}
+.grid tbody th{position:sticky;left:0;background:var(--bg);font-size:.85rem;font-weight:700;padding:0 8px;white-space:nowrap;text-align:left;min-width:84px}
+.grid tbody th button{all:unset;cursor:pointer;display:block;padding:10px 0;width:100%}
+.grid tbody th button:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.sat{color:#2467c9}.sun{color:#c0392b}
+.cell{display:block;width:100%;height:44px;border:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer}
+.cell[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:700}
+.cell[aria-pressed="true"]::after{content:"○"}
+.cell:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.ov{height:44px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:.78rem;font-variant-numeric:tabular-nums;color:var(--muted)}
+.ov.hit{background:var(--ok-soft);color:var(--ok);font-weight:700}
+.ov.pair{background:var(--ok);color:var(--accent-ink);font-weight:700}
+.ov.pairno{color:var(--line)}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+button.primary,button.sub{font:inherit;font-weight:700;padding:11px 18px;border-radius:8px;cursor:pointer;border:1px solid var(--accent)}
+button.primary{background:var(--accent);color:var(--accent-ink)}
+button.sub{background:var(--surface);color:var(--accent)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.status{min-height:1.5em;font-size:.92rem;margin:0}
+.status.ok{color:var(--ok)}.status.warn{color:var(--warn)}
+pre.out{margin:0;white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;font:inherit;font-size:.9rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.two{grid-template-columns:1fr}}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:4px}
+ul.people{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+ul.people li{border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.9rem}
+ul.people b{margin-right:6px}
+.tag{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-right:6px}
+[hidden]{display:none !important}
+@media (prefers-reduced-motion: no-preference){.cell,.tab{transition:background .12s}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>面談日程調整</h1>
+    <p>UNMUTE to ACTION 〜その声で次をつくれ〜 ／ 登壇者とメンターの面談(30分ほど)</p>
+  </header>
+
+  <section id="panel-input" class="card">
+    <h2>あなたの空き時間を教えてください</h2>
+    <p class="note">30分以上あいている時間帯をタップして「○」にしてください。回答の目安は11/13(金)までです。左の日付をタップすると、その日の全時間をまとめて切り替えられます。</p>
+
+    <div class="field">
+      <span class="lab">立場</span>
+      <div class="seg" id="role">
+        <input type="radio" name="role" id="role-p" value="登壇者" checked><label for="role-p">登壇者</label>
+        <input type="radio" name="role" id="role-m" value="メンター"><label for="role-m">メンター</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="name">お名前</label>
+      <input type="text" id="name" autocomplete="name" placeholder="例:森山 慎太郎">
+    </div>
+
+    <div class="field">
+      <span class="lab">希望する形式</span>
+      <div class="seg" id="fmt">
+        <input type="radio" name="fmt" id="fmt-a" value="どちらでも" checked><label for="fmt-a">どちらでも</label>
+        <input type="radio" name="fmt" id="fmt-f" value="対面"><label for="fmt-f">対面</label>
+        <input type="radio" name="fmt" id="fmt-o" value="オンライン"><label for="fmt-o">オンライン</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="lab">空いている時間(○をつける)</span>
+      <div class="gridbox"><table class="grid" id="inputGrid"></table></div>
+      <p class="note">各マスは、その時刻から1時間の枠です。たとえば「18」は18:00〜19:00です。</p>
+    </div>
+
+    <div class="field">
+      <label for="contact">連絡先(LINEの名前、またはメール)</label>
+      <input type="text" id="contact" placeholder="日程が決まったら、ここに連絡します">
+    </div>
+
+    <div class="field">
+      <label for="memo">ひとこと(任意)</label>
+      <textarea id="memo" placeholder="例:水曜は授業のあとなら大丈夫です"></textarea>
+    </div>
+
+    <div class="row">
+      <button class="primary" id="saveBtn" type="button">この内容で送信する</button>
+      <button class="sub" id="copyBtn" type="button">文章をコピーする</button>
+    </div>
+    <p class="status" id="saveStatus" role="status"></p>
+    <div class="field">
+      <span class="lab">送信できないときは、この文章をそのままLINEかメールで送ってください</span>
+      <pre class="out" id="outText">○をつけると、ここに文章が出ます。</pre>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  /* ---- 設定 ---- */
+  var START = new Date(2026, 10, 13);  // 2026-11-13
+  var DAYS = 10;                       // 11/13 - 11/22
+  var HOURS = [10,11,12,13,14,15,16,17,18,19];
+  var WD = ["日","月","火","水","木","金","土"];
+
+  function pad(n){ return (n<10?"0":"")+n; }
+  var days = [];
+  for (var i=0;i<DAYS;i++){
+    var d = new Date(START.getFullYear(), START.getMonth(), START.getDate()+i);
+    days.push({ key: pad(d.getMonth()+1)+pad(d.getDate()), label: (d.getMonth()+1)+"/"+d.getDate(), wd: d.getDay() });
+  }
+  function slotKey(day,h){ return day.key+"-"+h; }
+
+  /* ---- 入力グリッド ---- */
+  var mine = {};   // slotKey -> true
+  var inputGrid = document.getElementById("inputGrid");
+
+  function head(){
+    var h = "<thead><tr><th scope='col'></th>";
+    HOURS.forEach(function(x){ h += "<th scope='col'>"+x+"</th>"; });
+    return h + "</tr></thead>";
+  }
+  function dayHead(day){
+    var cls = day.wd===6?"sat":day.wd===0?"sun":"";
+    return "<span class='"+cls+"'>"+day.label+"("+WD[day.wd]+")</span>";
+  }
+  function buildInput(){
+    var h = head()+"<tbody>";
+    days.forEach(function(day,di){
+      h += "<tr><th scope='row'><button type='button' data-day='"+di+"' aria-label='"+day.label+"の全時間を切り替え'>"+dayHead(day)+"</button></th>";
+      HOURS.forEach(function(x){
+        var k = slotKey(day,x);
+        h += "<td><button type='button' class='cell' data-k='"+k+"' aria-pressed='false' aria-label='"+day.label+" "+x+"時'></button></td>";
+      });
+      h += "</tr>";
+    });
+    inputGrid.innerHTML = h+"</tbody>";
+  }
+  function paintInput(){
+    inputGrid.querySelectorAll(".cell").forEach(function(b){
+      b.setAttribute("aria-pressed", mine[b.dataset.k] ? "true":"false");
+    });
+    updateText();
+  }
+  inputGrid.addEventListener("click", function(e){
+    var c = e.target.closest(".cell");
+    if (c){ if (mine[c.dataset.k]) delete mine[c.dataset.k]; else mine[c.dataset.k]=true; paintInput(); return; }
+    var r = e.target.closest("button[data-day]");
+    if (r){
+      var day = days[+r.dataset.day];
+      var all = HOURS.every(function(x){ return mine[slotKey(day,x)]; });
+      HOURS.forEach(function(x){ if (all) delete mine[slotKey(day,x)]; else mine[slotKey(day,x)]=true; });
+      paintInput();
+    }
+  });
+
+  /* ---- 文章の生成 ---- */
+  function ranges(day, set){
+    var out=[], start=null, prev=null;
+    HOURS.forEach(function(x){
+      if (set[slotKey(day,x)]){ if (start===null) start=x; prev=x; }
+      else if (start!==null){ out.push([start,prev+1]); start=null; }
+    });
+    if (start!==null) out.push([start,prev+1]);
+    return out.map(function(r){ return r[0]+":00〜"+r[1]+":00"; }).join("、");
+  }
+  function val(name){ var el=document.querySelector("input[name="+name+"]:checked"); return el?el.value:""; }
+  function buildText(){
+    var nm = document.getElementById("name").value.trim() || "(お名前)";
+    var lines = ["【面談の空き時間】"+nm+"(" + val("role") + ")", "形式:"+val("fmt")];
+    var any=false;
+    days.forEach(function(day){
+      var r = ranges(day, mine);
+      if (r){ any=true; lines.push(day.label+"("+WD[day.wd]+") "+r); }
+    });
+    if (!any) lines.push("(まだ選んでいません)");
+    var ct = document.getElementById("contact").value.trim();
+    if (ct) lines.push("連絡先:"+ct);
+    var memo = document.getElementById("memo").value.trim();
+    if (memo) lines.push("ひとこと:"+memo);
+    return { text: lines.join("\n"), any: any };
+  }
+  function updateText(){ document.getElementById("outText").textContent = buildText().text; }
+  ["name","memo","contact"].forEach(function(id){ document.getElementById(id).addEventListener("input", updateText); });
+  document.querySelectorAll("input[name=role],input[name=fmt]").forEach(function(el){ el.addEventListener("change", updateText); });
+
+  /* ---- コピー ---- */
+  var saveStatus = document.getElementById("saveStatus");
+  function setStatus(msg, cls){ saveStatus.textContent = msg; saveStatus.className = "status "+(cls||""); }
+  document.getElementById("copyBtn").addEventListener("click", function(){
+    var t = buildText().text;
+    function fallback(){
+      var r = document.createRange(); r.selectNodeContents(document.getElementById("outText"));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      setStatus("下の文章を選択しました。長押しかCtrl+Cでコピーしてください。","warn");
+    }
+    try{
+      navigator.clipboard.writeText(t).then(function(){ setStatus("コピーしました。LINEかメールに貼り付けて送ってください。","ok"); }, fallback);
+    }catch(e){ fallback(); }
+  });
+
+  /* ---- 送信(Google Apps Script → スプレッドシート) ---- */
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycby52x8HCH-GQjHI4rfLXNFXdA_mSjzWa-ioukG7xRTFMxlz_fATW73Y0GuvcFhFc3KB/exec";
+  document.getElementById("saveBtn").addEventListener("click", function(){
+    var nm = document.getElementById("name").value.trim();
+    var b = buildText();
+    if (!nm){ setStatus("お名前を入力してください。","warn"); document.getElementById("name").focus(); return; }
+    if (!b.any){ setStatus("空いている時間に○を1つ以上つけてください。","warn"); return; }
+    var btn = document.getElementById("saveBtn"); btn.disabled = true; setStatus("送信しています…");
+    var slotsText = days.map(function(day){ var r=ranges(day,mine); return r? day.label+"("+WD[day.wd]+") "+r : ""; }).filter(Boolean).join(" / ");
+    var payload = {
+      type: "mendan", role: val("role"), name: nm, format: val("fmt"),
+      contact: document.getElementById("contact").value.trim(),
+      slotsText: slotsText, slotsRaw: Object.keys(mine).sort().join(","),
+      memo: document.getElementById("memo").value.trim(), sentAt: new Date().toISOString()
+    };
+    fetch(ENDPOINT, { method:"POST", body: JSON.stringify(payload), redirect:"follow" })
+      .then(function(res){ if (!res.ok) throw new Error("HTTP "+res.status); return res.json().catch(function(){ return null; }); })
+      .then(function(json){
+        if (json && json.ok === false) throw new Error(json.error || "server error");
+        setStatus("送信しました。ありがとうございます。変更するときは、もう一度送信してください(新しい回答を優先します)。","ok");
+      })
+      .catch(function(){ setStatus("送信できませんでした。下の文章をコピーして、LINEかメールで送ってください。","warn"); })
+      .then(function(){ btn.disabled = false; });
+  });
+
+  buildInput(); paintInput();
+})();
+</script>
+</body>
+</html>
