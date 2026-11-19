@@ -25,12 +25,12 @@ const CONFIG = {
       en: "~ Turn your voice into what's next ~"
     },
     date: {
-      ja: "2026年12月上旬\n(日時は決まり次第発表します)",
-      en: "Early December 2026\n(Date & time to be announced)"
+      ja: "2026年12月5日(土)\n(開始時間は決まり次第お知らせします)",
+      en: "Sat, Dec 5, 2026\n(Start time to be announced)"
     },
     venue: {
-      ja: "APU J101教室(予定)",
-      en: "APU Room J101 (planned)"
+      ja: "APU J101教室",
+      en: "APU Room J101"
     }
   },
 
@@ -123,7 +123,7 @@ const CONFIG = {
    * 表示順は、この配列の順番です。不要なカードは行ごと削除してください。
    */
   teasers: [
-    { id: "venue",    locked: true, eta: { ja: "決まり次第、ここで公開します", en: "Revealed here as soon as it's set" }, content: { ja: "", en: "" } },
+    { id: "venue",    locked: false, eta: { ja: "", en: "" }, content: { ja: "12月5日(土)、APU J101教室で開催決定!", en: "Confirmed: Sat, Dec 5 at APU Room J101!" } },
     { id: "speakers", locked: true, eta: { ja: "登壇者が決まり次第、公開します", en: "Revealed once the presenters are set" }, content: { ja: "", en: "" } },
     { id: "guests",   locked: true, eta: { ja: "決まり次第、ここで公開します", en: "Revealed here as soon as it's set" }, content: { ja: "", en: "" } },
     { id: "mingle",   locked: true, eta: { ja: "イベントが近づいたら公開します", en: "Revealed closer to the event" }, content: { ja: "", en: "" } }
