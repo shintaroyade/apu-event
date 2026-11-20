@@ -159,24 +159,6 @@ main > .section:first-child { padding-top: 40px; }
 [hidden] { display: none !important; }
 .section__title { font-size: clamp(23px, 6.2vw, 32px); }
 
-/* ---------- 背景のバブル(ストレス発散ギミック) ---------- */
-.hero { padding-bottom: 76px; }
-.pop-canvas { position: absolute; inset: 0; z-index: 0; touch-action: pan-y; cursor: pointer; }
-.hero__inner { pointer-events: none; }
-.hero__inner a, .hero__inner button, .hero__inner .recruit { pointer-events: auto; }
-.pop-hud {
-  position: absolute; left: 0; right: 0; bottom: 14px; z-index: 2; pointer-events: none;
-  display: flex; align-items: center; gap: 10px; max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter);
-}
-.pop-hint { flex: 1; margin: 0; font-size: 14px; line-height: 1.55; color: var(--c-muted); min-width: 0; }
-.pop-hint[data-msg] { color: var(--c-primary); font-weight: 700; }
-.pop-count { margin: 0; flex-shrink: 0; font-family: var(--font-tech); font-weight: 600; font-size: 15px; letter-spacing: .1em; color: var(--c-primary); font-variant-numeric: tabular-nums; }
-.pop-sound {
-  position: relative; flex-shrink: 0; width: 44px; height: 44px; padding: 0; pointer-events: auto;
-  border: 1px solid var(--c-line-strong); border-radius: 50%; background: var(--c-bg); color: var(--c-ink); font-size: 18px; line-height: 1;
-}
-.pop-sound.is-on { border-color: var(--c-primary); color: var(--c-primary); }
-.pop-sound:not(.is-on)::after { content: ""; position: absolute; left: 11px; right: 11px; top: 50%; height: 2px; background: var(--c-muted); transform: rotate(-35deg); }
 
 /* ---------- みんなのやってみたい ---------- */
 .wall-tools { margin: 20px 0 8px; display: flex; }
@@ -216,7 +198,6 @@ main > .section:first-child { padding-top: 40px; }
 @media (prefers-reduced-motion: reduce) {
   .wall-card { opacity: 1; transform: none; transition: none; }
 }
-.pop-canvas { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
 
 /* =========================================================================
  * 下のタブバー(全ページ共通)・「つぎは」カード・あそぶメニュー・ページ切り替え
